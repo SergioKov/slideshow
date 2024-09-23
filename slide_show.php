@@ -56,24 +56,24 @@ let old_temaData = {
     "slides": [
         {
             "slide_number": "1",
-            "content": "1) <b>dfsdfgh</b>es <h1>sdsdfhdh</h1> contenido de slide aki.. djdfjd fjdfghj dfgj j111111111111111111111"
+            "content": "1) <b>dfsdfgh</b>es <h1>sdsdfhdh</h1> <img src=\"./images/images1.jpg\">"
         },
         {
             "slide_number": "2",
-            "content": "2) es contenido de slide aki.. dfjfgjdfgj dfgj 2222222222222222222222"
+            "content": "2) <img src=\"./images/images2.jpg\">"
         },
         {
             "slide_number": "3",
-            "content": "3) es contenido de slide aki.. dfgj dfgjdfgj  333333333333333333"
+            "content": "3) <img src=\"./images/images3.jpg\">"
         },
         {
             "slide_number": "4",
-            "content": "4) es contenido de slide aki.. dfgj dfgjdfgj 444444444444444"
+            "content": "4) <img src=\"./images/images4.jpg\">"
         },
         {
             "slide_number": "5",
-            "content": "5) es contenido de slide aki.. dfgj dfgjdfgj 555555555555555"
-        },
+            "content": "5) <img src=\"./images/images5.jpg\">"
+        }
     ]
 }
 

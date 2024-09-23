@@ -11,7 +11,9 @@ body {
     background: linear-gradient(to bottom right, white 0%, #9dd3fd 10%, #1875bf 45%, #012643 100%);
 }
 
-
+img{
+    width: 100%;
+}
 button{
     border-radius: 3px;
     padding: 2px 5px;
