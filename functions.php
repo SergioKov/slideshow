@@ -47,6 +47,21 @@ function echo_json($variable, $name_var = null){
     exit;
 }
 
+function echo_json_x($variable, $name_var = null){//con exit;
+    if($name_var != null){
+        echo json_encode([
+            $name_var => $variable,
+            'hago_exit' => true
+        ], JSON_UNESCAPED_UNICODE);    
+    }else{
+        echo json_encode([
+            'variable' => $variable,
+            'hago_exit' => true
+        ], JSON_UNESCAPED_UNICODE);
+    }    
+    exit;
+}
+
 function interpolateQuery($query, $params) {//$params es un array
     // Dividir la consulta en partes utilizando '?' como delimitador
     $parts = explode('?', $query);

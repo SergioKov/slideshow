@@ -71,7 +71,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
 if( true /*isset($_SESSION['id_user'])*/ ){
     //$id_user_logged = $_SESSION['id_user'];
     $id_user_logged = 1;//test
-    //echo json_encode(['mensaje' => 'sesion username_logged: ' . $username_logged ]);        
+    //echo_json_x($id_user_logged);        
 } else {
     $id_user_logged = 5;//0
     //en prod no muestro nada
