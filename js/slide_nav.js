@@ -10,6 +10,7 @@ let obj_temaData = {};
 
 // let url = './json/tema1.json';
 let url = './json/tema2.json';
+//let url = './json/tema4.json';
 
 crear_obj_temaData(url);//url => 'la/ruta/al/file.json'
 makeSlides();
