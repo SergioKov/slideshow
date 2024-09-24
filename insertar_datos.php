@@ -184,10 +184,10 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
                         VALUES ('$id_user_logged', '$arr', '$fechaHoraActual')
         ";
         $sql2_in_prep = "INSERT INTO $tabla (id_user, $campo, created_at) 
-                        VALUES ($sign, $sign, '$fechaHoraActual')
+                        VALUES ($sign,              $sign, '$fechaHoraActual')
         ";
         //$arr paso tal cual ya que los datos pueden tener dentro '?' y romper sql
-        $arr_params = [$id_user_logged, $username_logged, $arr];
+        $arr_params = [$id_user_logged, $arr];
         $sql2_in_preparada = prepararQuery($conn, $sql2_in_prep, $arr_params, $sign);
         $result2 = $conn->query($sql2_in_preparada);
         //debug_x($sql2_in_preparada, 'sql2_in_preparada');

@@ -1,0 +1,76 @@
+{
+    "titulo": "Eurekar",
+    "tema_bg": "./images/fondo_opera.jpg",
+    "slides": [
+        {
+            "slide_number": "inicio",
+            "bg": "./temas/tema2/fondo_opera.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "fin",
+            "bg": "./temas/tema2/fondo_opera_fin.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "1",
+            "bg": "./temas/tema2/preview_slide_1.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "2",
+            "bg": "./temas/tema2/preview_slide_2.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "3",
+            "bg": "./temas/tema2/preview_slide_3.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "4",
+            "bg": "./temas/tema2/preview_slide_4.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "5",
+            "bg": "./temas/tema2/preview_slide_5.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "6",
+            "bg": "./temas/tema2/preview_slide_6.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "7",
+            "bg": "./temas/tema2/preview_slide_7.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "8",
+            "bg": "./temas/tema2/preview_slide_8.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "9",
+            "bg": "./temas/tema2/preview_slide_9.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "10",
+            "bg": "./temas/tema2/preview_slide_10.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "11",
+            "bg": "./temas/tema2/preview_slide_11.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "12",
+            "bg": "./temas/tema2/preview_slide_12.jpg",
+            "content": ""
+        }
+    ]
+}

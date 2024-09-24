@@ -9,6 +9,32 @@ body {
     padding: 0;
     height: 100vh;
     background: linear-gradient(to bottom right, white 0%, #9dd3fd 10%, #1875bf 45%, #012643 100%);
+    color: white;
+    font-family: 'Roboto Slab',Arial,Tahoma, 'sans serif';
+}
+.body_bg {
+    background: #000000;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* background-image: url('../images/images1.jpg'); */
+    transition: background-image 1s ease-in-out;
+}
+
+.bg1 {
+    background-image: url('../images/images1.jpg');
+}
+.bg2 {
+    background-image: url('../images/images3.jpg');
+}
+.bg3 {
+    background-image: url('../images/images3.jpg');
+}
+.bg4 {
+    background-image: url('../images/images4.jpg');
+}
+.bg5 {
+    background-image: url('../images/images5.jpg');
 }
 
 img{
@@ -76,4 +102,16 @@ button{
     padding: 10px;
     border-radius: 5px;
     margin: 5px;
+}
+
+#wr_vista_slides {
+    border: 3px solid #9E9E9E;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 600px;
+}
+.vs_inner {
+    /* transform: scale(0.8); */
 }

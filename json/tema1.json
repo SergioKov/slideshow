@@ -1,0 +1,66 @@
+{
+    "titulo": "Eurekar",
+    "tema_bg": "./images/fondo_opera.jpg",
+    "slides": [
+        {
+            "slide_number": "1",
+            "bg": "./temas/tema1/Diapositiva1.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "2",
+            "bg": "./temas/tema1/Diapositiva2.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "3",
+            "bg": "./temas/tema1/Diapositiva3.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "4",
+            "bg": "./temas/tema1/Diapositiva4.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "5",
+            "bg": "./temas/tema1/Diapositiva5.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "6",
+            "bg": "./temas/tema1/Diapositiva6.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "7",
+            "bg": "./temas/tema1/Diapositiva7.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "8",
+            "bg": "./temas/tema1/Diapositiva8.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "9",
+            "bg": "./temas/tema1/Diapositiva9.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "10",
+            "bg": "./temas/tema1/Diapositiva10.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "11",
+            "bg": "./temas/tema1/Diapositiva11.jpg",
+            "content": ""
+        },
+        {
+            "slide_number": "12",
+            "bg": "./temas/tema1/Diapositiva12.jpg",
+            "content": ""
+        }
+    ]
+}
