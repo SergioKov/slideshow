@@ -5,7 +5,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
     <link id="estilos_base" rel="stylesheet" href="./css/style.css">
 </head>
-<body>
+<body id="body_contenedor" class="body_bg">
+    <div class="vista_inner">
+        
+    </div>
 <?php
 
 include('functions.php');
@@ -38,10 +41,11 @@ $conn->close();
 
 <h3 style="display:none;">Slide actual: <span id="sp_id">...</span></h3>
 
-<div id="contenedor"></div>
 
-
+<script src="./js/config_both.js"></script>
 <script src="./js/slide_show.js"></script>
+<script src="./js/slide_both.js"></script>
+
 
 </body>
 </html>

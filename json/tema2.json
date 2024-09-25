@@ -1,26 +1,26 @@
 {
-    "titulo": "Eurekar",
+    "titulo": "<h1>Eurekar</h1>",
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
             "slide_number": "inicio",
             "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": ""
+            "content": "<h1>Titulo Inicio</h1><p>algun texto INICIO</p>"
         },
         {
             "slide_number": "fin",
             "bg": "./temas/tema2/fondo_opera_fin.jpg",
-            "content": ""
+            "content": "<h1>Titulo Fin</h1><p>algun texto FIN</p>"
         },
         {
             "slide_number": "1",
             "bg": "./temas/tema2/preview_slide_1.jpg",
-            "content": ""
+            "content": "<h1>Titulo 1</h1><p>algun texto 1</p>"
         },
         {
             "slide_number": "2",
             "bg": "./temas/tema2/preview_slide_2.jpg",
-            "content": ""
+            "content": "<h1>Titulo 2</h1><p>algun texto 2</p>"
         },
         {
             "slide_number": "3",

@@ -48,14 +48,29 @@ $conn->close();
     <button id="goNext" class="btn" onclick="goToSlide('next')">Next</button>  
 </div>
 
-<div id="wr_slides"></div>
+<div id="wr_btns_slides"></div>
 
-<div id="wr_vista_slides" class="body_bg">
-    <div class="vs_inner"></div>
+<div id="wr_both">
+
+    <div id="wr_lista_slides"> 
+        <div class="lista_inner">
+        </div>       
+    </div>
+
+    <div id="wr_vista_slides" class="body_bg">
+        <div class="vista_inner">
+        </div>
+    </div>
+
 </div>
 
 
+
+
+
+<script src="./js/config_both.js"></script>
 <script src="./js/slide_nav.js"></script>
+<script src="./js/slide_both.js"></script>
 
 </body>
 </html>

@@ -1,15 +1,11 @@
 const sp_id = document.getElementById('sp_id');
-const eid_contenedor = document.getElementById('contenedor');
+const body_contenedor = document.getElementById('body_contenedor');
+const slideShowElement = body_contenedor;//toda la página
 
 let delay_fn = 1000;
 let slide_shown = sp_id.innerText;
-let obj_temaData = {};
 
-// let url = './json/tema1.json';
-let url = './json/tema2.json';
-//let url = './json/tema4.json';
 
-crear_obj_temaData(url);//url => 'la/ruta/al/file.json'
 lanzarIntentos('slides', 'slide_actual');
 
 async function lanzarIntentos(tabla, campo){
@@ -23,42 +19,8 @@ async function lanzarIntentos(tabla, campo){
     },delay_fn);
 }
 
-async function crear_obj_temaData(url){
-   console.log('=== async function crear_temaData() === ');
-
-   obj_temaData = await make_obj_temaData(url);
-    //console.log(obj_lang);
-
-    document.body.classList.add('body_bg');
-    document.body.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
-}
-
-async function make_obj_temaData(url){
-    console.log('=== function make_obj_temaData() ===');
-    
-    try {          
-        
-        let obj_temaData_f = await fetchDataToJson(url);
-        console.log('obj_temaData_f:');
-
-        return obj_temaData_f;
-
-    } catch (error) {
-        // Código a realizar cuando se rechaza la promesa
-        console.error('make_obj_temaData. error: ',error);
-    }    
-}
-
-async function fetchDataToJson(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
 async function obtenerDatosDeBD(tabla, campo){
     //console.log('=== function obtenerDatosDeBD(tabla, campo) ===');
-
-    let slide_actual = sp_id;    
 
     try {
                
@@ -84,6 +46,7 @@ async function obtenerDatosDeBD(tabla, campo){
         
         if(data.success){
             console.log('success is true');
+
             if(data.valorCampo.includes('"')){
                 data.valorCampo = data.valorCampo.replaceAll('"',''); 
             }
@@ -96,6 +59,7 @@ async function obtenerDatosDeBD(tabla, campo){
 
                 pintSlide(data.valorCampo);
             }
+
             console.log('desde obtenerDatosDeBD() - llamo lanzarIntentos()');
             lanzarIntentos('slides', 'slide_actual'); 
 
@@ -109,28 +73,4 @@ async function obtenerDatosDeBD(tabla, campo){
     }
 }
 
-function pintSlide(slide_number = null){
-    console.log('=== function pintSlide() ===');
-    
-    if(!slide_number) return;
 
-    slide_number = (!['"inicio"','"fin"'].includes(slide_number)) ? slide_number.toString() : slide_number ; 
-
-    if(obj_temaData){
-        let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
-
-        if(Object.keys(slideData).length !== 0){
-            console.log(slideData);
-
-            document.body.style.backgroundImage = `url(${slideData.bg})`;
-            
-            //eid_contenedor.innerHTML = `
-            //    ${obj_temaData.titulo}
-            //    ${slideData.content}
-            //`;
-
-        }else{
-            console.log('contenido no está definido');
-        }        
-    }
-}

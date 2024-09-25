@@ -1,52 +1,16 @@
 const sp_id = document.getElementById('sp_id');
 const wr_vista_slides = document.getElementById('wr_vista_slides');
+const slideShowElement = wr_vista_slides;// solo un div para la vista
 
 let slide_number = 1;
 let minVal = 1;
 let maxVal = 12;
 let is_started = false;
 let is_finished = false;
-let obj_temaData = {};
 
-// let url = './json/tema1.json';
-let url = './json/tema2.json';
-//let url = './json/tema4.json';
+// makeSlides();
+// getSlideActual('slides', 'slide_actual');
 
-crear_obj_temaData(url);//url => 'la/ruta/al/file.json'
-makeSlides();
-getSlideActual('slides', 'slide_actual');
-
-async function crear_obj_temaData(url){
-   console.log('=== async function crear_temaData() === ');
-
-   obj_temaData = await make_obj_temaData(url);
-    //console.log(obj_lang);
-
-    wr_vista_slides.classList.add('body_bg');
-    wr_vista_slides.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
-}
-
-async function make_obj_temaData(url){
-    console.log('=== function make_obj_temaData() ===');
-    
-    try {          
-        
-        let obj_temaData_f = await fetchDataToJson(url);
-        console.log('obj_temaData_f:');
-
-        return obj_temaData_f;
-
-    } catch (error) {
-        // Código a realizar cuando se rechaza la promesa
-        console.error('make_obj_temaData. error: ',error);
-    }    
-}
-
-async function fetchDataToJson(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
 
 async function insertarDatos(tabla, campo, arr) {
     console.log('=== function insertarDatos(tabla, campo, arr) ===');
@@ -101,8 +65,6 @@ async function insertarDatos(tabla, campo, arr) {
 async function getSlideActual(tabla, campo){
     console.log('=== function getSlideActual(tabla, campo) ===');
 
-    let slide_actual = sp_id;
-
     try {
                
         const response = await fetch('./obtener_datos.php', {
@@ -127,12 +89,15 @@ async function getSlideActual(tabla, campo){
         
         if(data.success){
             console.log('success is true');
+
             if(data.valorCampo.includes('"')){
                 data.valorCampo = data.valorCampo.replaceAll('"',''); 
             }
+
             slide_number = data.valorCampo; 
             sp_id.textContent = slide_number;
             pintBtnActive(slide_number);
+            pintSldActive(slide_number);
 
             setTimeout(()=>{
                 if(Object.keys(obj_temaData).length > 0){
@@ -153,17 +118,24 @@ async function getSlideActual(tabla, campo){
 function iniciarSlides(){
     slide_number = 'inicio';
     pintBtnActive(slide_number); 
+    pintSldActive(slide_number); 
     insertarDatos('slides', 'slide_actual', slide_number);
 }
 
 function terminarSlides(){
     slide_number = 'fin';
     pintBtnActive(slide_number); 
+    pintSldActive(slide_number); 
     insertarDatos('slides', 'slide_actual', slide_number);
 }
 
 function makeSlides(){
-    const wr_slides = document.getElementById('wr_slides');
+    const wr_btns_slides = document.getElementById('wr_btns_slides');
+    const wr_lista_slides = document.getElementById('wr_lista_slides');
+    const elc_lista_inner = wr_lista_slides.querySelector('.lista_inner');
+
+    let slideData_inicio = obj_temaData.slides.find(v => v.slide_number === 'inicio');
+    let slideData_fin = obj_temaData.slides.find(v => v.slide_number === 'fin');
 
     const btn_inicio = document.createElement('button');
     btn_inicio.id = 'btn_inicio';
@@ -173,15 +145,32 @@ function makeSlides(){
     btn_inicio.onclick = (event)=>{
         slide_number = 'inicio';
         sp_id.innerText = slide_number;
+        pintBtnActive(slide_number);
+        pintSldActive(slide_number);
         insertarDatos('slides', 'slide_actual', slide_number);
-        console.log(event);
-        let este_btn = event.currentTarget;
-        resetBtnActive();
-        este_btn.classList.add('btn_active');
     };
-    wr_slides.append(btn_inicio);
+    wr_btns_slides.append(btn_inicio);
+
+    const sld_inicio = document.createElement('div');
+    sld_inicio.id = 'sld_inicio';
+    sld_inicio.className = 'sld';
+    sld_inicio.dataset.slide_number = 'inicio';
+    sld_inicio.innerHTML = `<div class="sld_inner">${slideData_inicio.content}</div>`;
+    sld_inicio.onclick = (event)=>{
+        slide_number = 'inicio';
+        sp_id.innerText = slide_number;
+        pintBtnActive(slide_number);
+        pintSldActive(slide_number);
+        insertarDatos('slides', 'slide_actual', slide_number);
+    };
+    elc_lista_inner.append(sld_inicio);
 
     for (let index = minVal; index <= maxVal; index++) {
+
+        let slideData = obj_temaData.slides.find(v => v.slide_number === index.toString());
+
+
+        //botón de slide
         const btn = document.createElement('button');
         btn.className = 'btn';
         btn.dataset.slide_number = index;
@@ -189,13 +178,26 @@ function makeSlides(){
         btn.onclick = (event)=>{
             slide_number = index;
             sp_id.innerText = slide_number;
+            pintBtnActive(slide_number);
+            pintSldActive(slide_number);    
             insertarDatos('slides', 'slide_actual', index);
-            console.log(event);
-            let este_btn = event.currentTarget;
-            resetBtnActive();
-            este_btn.classList.add('btn_active');
         };
-        wr_slides.append(btn);
+        wr_btns_slides.append(btn);
+        
+        //block slide
+        const sld = document.createElement('div');
+        sld.className = 'sld';
+        sld.dataset.slide_number = index;
+        sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
+        sld.onclick = (event)=>{
+            slide_number = index;
+            sp_id.innerText = slide_number;
+            pintBtnActive(slide_number);
+            pintSldActive(slide_number);    
+            insertarDatos('slides', 'slide_actual', index);
+        };
+        elc_lista_inner.append(sld);
+
     }
 
     const btn_fin = document.createElement('button');
@@ -206,19 +208,38 @@ function makeSlides(){
     btn_fin.onclick = (event)=>{
         slide_number = 'fin';
         sp_id.innerText = slide_number;
+        pintBtnActive(slide_number);
+        pintSldActive(slide_number);
         insertarDatos('slides', 'slide_actual', slide_number);
-        console.log(event);
-        let este_btn = event.currentTarget;
-        resetBtnActive();
-        este_btn.classList.add('btn_active');
     };
-    wr_slides.append(btn_fin);    
+    wr_btns_slides.append(btn_fin); 
+    
+    const sld_fin = document.createElement('div');
+    sld_fin.id = 'sld_fin';
+    sld_fin.className = 'sld';
+    sld_fin.dataset.slide_number = 'fin';
+    sld_fin.innerHTML = `<div class="sld_inner">${slideData_fin.content}</div>`;
+    sld_fin.onclick = (event)=>{
+        slide_number = 'fin';
+        sp_id.innerText = slide_number;
+        pintBtnActive(slide_number);
+        pintSldActive(slide_number);
+        insertarDatos('slides', 'slide_actual', slide_number);
+    };
+    elc_lista_inner.append(sld_fin);    
 }
 
 function resetBtnActive(){
-    const btnsAll = document.querySelectorAll('#wr_slides .btn');
+    const btnsAll = document.querySelectorAll('#wr_btns_slides .btn');
     btnsAll.forEach(el=>{
         el.classList.remove('btn_active');
+    });
+}
+
+function resetSldActive(){
+    const btnsAll = document.querySelectorAll('#wr_lista_slides .lista_inner .sld');
+    btnsAll.forEach(el=>{
+        el.classList.remove('sld_active');
     });
 }
 
@@ -228,36 +249,21 @@ function resetSlideActual(){
     insertarDatos('slides', 'slide_actual', slide_number);    
 }
 
-function pintSlide(slide_number = null){
-    console.log('=== function pintSlide() ===');
-    
-    if(!slide_number) return;
-
-    slide_number = (!['"inicio"','"fin"'].includes(slide_number)) ? slide_number.toString() : slide_number ; 
-
-    if(obj_temaData){
-        let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
-
-        if(Object.keys(slideData).length !== 0){
-            console.log(slideData);
-
-            wr_vista_slides.style.backgroundImage = `url(${slideData.bg})`;
-            
-            //wr_vista_slides.querySelector('.vs_inner').innerHTML = `
-            //    ${obj_temaData.titulo}
-            //    ${slideData.content}
-            //`;
-        }else{
-            console.log('contenido no está definido');
-        }        
-    }
-}
-
 function pintBtnActive(slide_number){
     resetBtnActive();
-     if(true /*slide_number >= minVal && slide_number <= maxVal*/){
-        document.querySelector('button[data-slide_number="' + slide_number + '"]').classList.add('btn_active');
-    }
+    let btn_active = document.querySelector('button[data-slide_number="' + slide_number + '"]');
+    btn_active.classList.add('btn_active');
+}
+
+function pintSldActive(slide_number){
+    resetSldActive();
+    let sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
+    sld_active.classList.add('sld_active');
+    sld_active.scrollIntoView({
+        behavior: "smooth",  // Animación suave al desplazar
+        block: "center",     // Alinear el elemento en el centro verticalmente
+        inline: "center"     // Alinear el elemento en el centro horizontalmente
+    });
 }
 
 function goToSlide(dir = null){
@@ -312,6 +318,7 @@ function goToSlide(dir = null){
 
     sp_id.innerText = slide_number;
     pintBtnActive(slide_number);
+    pintSldActive(slide_number);
 
     insertarDatos('slides', 'slide_actual', slide_number);    
     
