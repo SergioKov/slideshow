@@ -42,13 +42,11 @@ $conn->close();
 <div id="wr_nav">
     <button id="goPrev" class="btn" onclick="goToSlide('prev')">Prev</button>
 
-    <button id="btn_iniciar" class="btn" onclick="iniciarSlides()">Iniciar</button>
-    <button id="btn_finalizar" class="btn" onclick="finalizarSlides()">Finalizar</button> 
+    <button id="btn_iniciar" class="btn btn_ini_fin" onclick="iniciarSlides()">Iniciar</button>
+    <button id="btn_finalizar" class="btn btn_ini_fin" onclick="finalizarSlides()">Finalizar</button> 
 
     <button id="goNext" class="btn" onclick="goToSlide('next')">Next</button>  
 </div>
-
-<div id="wr_btns_slides"></div>
 
 <div id="wr_both">
 
@@ -63,6 +61,8 @@ $conn->close();
     </div>
 
 </div>
+
+<div id="wr_btns_slides"></div>
 
 
 

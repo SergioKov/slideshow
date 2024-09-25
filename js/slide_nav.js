@@ -139,7 +139,7 @@ function makeSlides(){
 
     const btn_inicio = document.createElement('button');
     btn_inicio.id = 'btn_inicio';
-    btn_inicio.className = 'btn';
+    btn_inicio.className = 'btn btn_ini_fin_sm';
     btn_inicio.dataset.slide_number = 'inicio';
     btn_inicio.textContent = 'Inicio';
     btn_inicio.onclick = (event)=>{
@@ -174,7 +174,7 @@ function makeSlides(){
 
         //botón de slide
         const btn = document.createElement('button');
-        btn.className = 'btn';
+        btn.className = 'btn btn_round';
         btn.dataset.slide_number = index;
         btn.textContent = index;
         btn.onclick = (event)=>{
@@ -206,7 +206,7 @@ function makeSlides(){
 
     const btn_fin = document.createElement('button');
     btn_fin.id = 'btn_fin';
-    btn_fin.className = 'btn';
+    btn_fin.className = 'btn btn_ini_fin_sm';
     btn_fin.dataset.slide_number = 'fin';
     btn_fin.textContent = 'Fin';
     btn_fin.onclick = (event)=>{
