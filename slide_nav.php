@@ -43,7 +43,7 @@ $conn->close();
     <button id="goPrev" class="btn" onclick="goToSlide('prev')">Prev</button>
 
     <button id="btn_iniciar" class="btn" onclick="iniciarSlides()">Iniciar</button>
-    <button id="btn_terminar" class="btn" onclick="terminarSlides()">Finalizar</button> 
+    <button id="btn_finalizar" class="btn" onclick="finalizarSlides()">Finalizar</button> 
 
     <button id="goNext" class="btn" onclick="goToSlide('next')">Next</button>  
 </div>

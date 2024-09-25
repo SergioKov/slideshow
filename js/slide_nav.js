@@ -122,7 +122,7 @@ function iniciarSlides(){
     insertarDatos('slides', 'slide_actual', slide_number);
 }
 
-function terminarSlides(){
+function finalizarSlides(){
     slide_number = 'fin';
     pintBtnActive(slide_number); 
     pintSldActive(slide_number); 
@@ -155,6 +155,8 @@ function makeSlides(){
     sld_inicio.id = 'sld_inicio';
     sld_inicio.className = 'sld';
     sld_inicio.dataset.slide_number = 'inicio';
+    sld_inicio.style.backgroundImage = `url(${slideData_inicio.bg})`;
+    sld_inicio.style.backgroundSize = 'contain';
     sld_inicio.innerHTML = `<div class="sld_inner">${slideData_inicio.content}</div>`;
     sld_inicio.onclick = (event)=>{
         slide_number = 'inicio';
@@ -188,6 +190,8 @@ function makeSlides(){
         const sld = document.createElement('div');
         sld.className = 'sld';
         sld.dataset.slide_number = index;
+        sld.style.backgroundImage = `url(${slideData.bg})`;
+        sld.style.backgroundSize = 'contain';    
         sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
         sld.onclick = (event)=>{
             slide_number = index;
@@ -218,6 +222,8 @@ function makeSlides(){
     sld_fin.id = 'sld_fin';
     sld_fin.className = 'sld';
     sld_fin.dataset.slide_number = 'fin';
+    sld_fin.style.backgroundImage = `url(${slideData_fin.bg})`;
+    sld_fin.style.backgroundSize = 'contain';
     sld_fin.innerHTML = `<div class="sld_inner">${slideData_fin.content}</div>`;
     sld_fin.onclick = (event)=>{
         slide_number = 'fin';

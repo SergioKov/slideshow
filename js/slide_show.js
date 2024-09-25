@@ -1,6 +1,6 @@
 const sp_id = document.getElementById('sp_id');
-const body_contenedor = document.getElementById('body_contenedor');
-const slideShowElement = body_contenedor;//toda la página
+const slide_contenedor = document.getElementById('slide_contenedor');
+const slideShowElement = slide_contenedor;//toda la página
 
 let delay_fn = 1000;
 let slide_shown = sp_id.innerText;
