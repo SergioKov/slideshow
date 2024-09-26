@@ -124,50 +124,6 @@ $conn->close();
 
 <script>
 
-const eid_header = document.getElementById('header'); 
-const eid_sidebar = document.getElementById('sidebar'); 
-const eid_main = document.getElementById('main'); 
-const eid_section1 = document.getElementById('section1'); 
-const eid_section2 = document.getElementById('section2'); 
-const eid_footer = document.getElementById('footer');
-
-mySizeWindow();
-    
-function mySizeWindow(){
-    
-    let window_w = window.innerWidth;
-    let window_h = window.innerHeight;
-    let header_h = eid_header.offsetHeight;
-    let footer_h = eid_footer.offsetHeight;
-
-    let ecl_bl_head = eid_sidebar.querySelector('.bl_head');
-    let ecl_side_body = eid_sidebar.querySelector('.side_body');
-    let bl_head_h = ecl_bl_head.offsetHeight;
-    
-    let main_h = 
-      window_h //960
-    - header_h //42
-    - footer_h //46
-    ;
-    eid_main.style.top = header_h + 'px';
-    eid_main.style.height = main_h + 'px';
-
-    
-    
-    let side_body_h = 
-      main_h
-    - bl_head_h
-    ;    
-    ecl_side_body.style.height = side_body_h + 'px';
-    //eid_container.style.height = container_h + 'px';
-    
-
-} 
-
-window.addEventListener('resize',()=>{
-    //console.log('resize - window.innerWidth: '+window.innerWidth);
-    mySizeWindow();    
-});
 
 </script>
 
