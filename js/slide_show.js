@@ -1,6 +1,6 @@
 const sp_id = document.getElementById('sp_id');
-const slide_contenedor = document.getElementById('slide_contenedor');
-const slideShowElement = slide_contenedor;//toda la página
+const contenedor_show = document.getElementById('contenedor_show');
+const slideShowElement = contenedor_show;//toda la página
 
 let delay_fn = 1000;
 let slide_shown = sp_id.innerText;
@@ -45,11 +45,7 @@ async function obtenerDatosDeBD(tabla, campo){
         console.log('data de bd: ',data);  
         
         if(data.success){
-            console.log('success is true');
-
-            if(data.valorCampo.includes('"')){
-                data.valorCampo = data.valorCampo.replaceAll('"',''); 
-            }
+            //console.log('success is true');
 
             if(data.valorCampo !== slide_shown){//si es distinto, lo pinto
                 console.log('[if] --- SE HA CAMBIADO SLIDE ---');

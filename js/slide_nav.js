@@ -1,15 +1,13 @@
 const sp_id = document.getElementById('sp_id');
+const wr_vista_next = document.getElementById('wr_vista_next');
 const wr_vista_slides = document.getElementById('wr_vista_slides');
 const slideShowElement = wr_vista_slides;// solo un div para la vista
 
 let slide_number = 1;
-let minVal = 1;
-let maxVal = 12;
+let minVal = 0;
+let maxVal = 13;
 let is_started = false;
 let is_finished = false;
-
-// makeSlides();
-// getSlideActual('slides', 'slide_actual');
 
 
 async function insertarDatos(tabla, campo, arr) {
@@ -90,14 +88,11 @@ async function getSlideActual(tabla, campo){
         if(data.success){
             console.log('success is true');
 
-            if(data.valorCampo.includes('"')){
-                data.valorCampo = data.valorCampo.replaceAll('"',''); 
-            }
-
             slide_number = data.valorCampo; 
-            sp_id.textContent = slide_number;
+            //sp_id.textContent = slide_number;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
+            pintSlideNext((Number(slide_number) + 1).toString());
 
             setTimeout(()=>{
                 if(Object.keys(obj_temaData).length > 0){
@@ -116,72 +111,52 @@ async function getSlideActual(tabla, campo){
 }
 
 function iniciarSlides(){
-    slide_number = 'inicio';
+    slide_number = minVal;
     pintBtnActive(slide_number); 
     pintSldActive(slide_number); 
+    pintSlideNext((Number(slide_number) + 1).toString()); 
     insertarDatos('slides', 'slide_actual', slide_number);
 }
 
 function finalizarSlides(){
-    slide_number = 'fin';
+    slide_number = maxVal;
     pintBtnActive(slide_number); 
-    pintSldActive(slide_number); 
+    pintSldActive(slide_number);
+    pintSlideNext((Number(slide_number) + 1).toString()); 
     insertarDatos('slides', 'slide_actual', slide_number);
 }
 
 function makeSlides(){
     const wr_btns_slides = document.getElementById('wr_btns_slides');
     const wr_lista_slides = document.getElementById('wr_lista_slides');
-    const elc_lista_inner = wr_lista_slides.querySelector('.lista_inner');
-
-    let slideData_inicio = obj_temaData.slides.find(v => v.slide_number === 'inicio');
-    let slideData_fin = obj_temaData.slides.find(v => v.slide_number === 'fin');
-
-    const btn_inicio = document.createElement('button');
-    btn_inicio.id = 'btn_inicio';
-    btn_inicio.className = 'btn btn_ini_fin_sm';
-    btn_inicio.dataset.slide_number = 'inicio';
-    btn_inicio.textContent = 'Inicio';
-    btn_inicio.onclick = (event)=>{
-        slide_number = 'inicio';
-        sp_id.innerText = slide_number;
-        pintBtnActive(slide_number);
-        pintSldActive(slide_number);
-        insertarDatos('slides', 'slide_actual', slide_number);
-    };
-    wr_btns_slides.append(btn_inicio);
-
-    const sld_inicio = document.createElement('div');
-    sld_inicio.id = 'sld_inicio';
-    sld_inicio.className = 'sld';
-    sld_inicio.dataset.slide_number = 'inicio';
-    sld_inicio.style.backgroundImage = `url(${slideData_inicio.bg})`;
-    sld_inicio.style.backgroundSize = 'contain';
-    sld_inicio.innerHTML = `<div class="sld_inner">${slideData_inicio.content}</div>`;
-    sld_inicio.onclick = (event)=>{
-        slide_number = 'inicio';
-        sp_id.innerText = slide_number;
-        pintBtnActive(slide_number);
-        pintSldActive(slide_number);
-        insertarDatos('slides', 'slide_actual', slide_number);
-    };
-    elc_lista_inner.append(sld_inicio);
+    const ecl_side_body = document.querySelector('.side_body');
+    const ecl_lista_inner = document.querySelector('.lista_inner');
 
     for (let index = minVal; index <= maxVal; index++) {
 
         let slideData = obj_temaData.slides.find(v => v.slide_number === index.toString());
 
-
         //botón de slide
         const btn = document.createElement('button');
-        btn.className = 'btn btn_round';
+        if(index == minVal){
+            btn.id = 'btn_inicio';
+            btn.className = 'btn btn_ini_fin_sm';
+            btn.textContent = 'Inicio';
+        }else if(index == maxVal){
+            btn.id = 'btn_fin';
+            btn.className = 'btn btn_ini_fin_sm';
+            btn.textContent = 'Fin';
+        }else{
+            btn.className = 'btn btn_round';
+            btn.textContent = index;
+        }
         btn.dataset.slide_number = index;
-        btn.textContent = index;
         btn.onclick = (event)=>{
             slide_number = index;
             sp_id.innerText = slide_number;
             pintBtnActive(slide_number);
-            pintSldActive(slide_number);    
+            pintSldActive(slide_number);
+            pintSlideNext((Number(slide_number) + 1).toString());    
             insertarDatos('slides', 'slide_actual', index);
         };
         wr_btns_slides.append(btn);
@@ -197,42 +172,12 @@ function makeSlides(){
             slide_number = index;
             sp_id.innerText = slide_number;
             pintBtnActive(slide_number);
-            pintSldActive(slide_number);    
+            pintSldActive(slide_number);
+            pintSlideNext((Number(slide_number) + 1).toString());    
             insertarDatos('slides', 'slide_actual', index);
         };
-        elc_lista_inner.append(sld);
-
+        ecl_lista_inner.append(sld);
     }
-
-    const btn_fin = document.createElement('button');
-    btn_fin.id = 'btn_fin';
-    btn_fin.className = 'btn btn_ini_fin_sm';
-    btn_fin.dataset.slide_number = 'fin';
-    btn_fin.textContent = 'Fin';
-    btn_fin.onclick = (event)=>{
-        slide_number = 'fin';
-        sp_id.innerText = slide_number;
-        pintBtnActive(slide_number);
-        pintSldActive(slide_number);
-        insertarDatos('slides', 'slide_actual', slide_number);
-    };
-    wr_btns_slides.append(btn_fin); 
-    
-    const sld_fin = document.createElement('div');
-    sld_fin.id = 'sld_fin';
-    sld_fin.className = 'sld';
-    sld_fin.dataset.slide_number = 'fin';
-    sld_fin.style.backgroundImage = `url(${slideData_fin.bg})`;
-    sld_fin.style.backgroundSize = 'contain';
-    sld_fin.innerHTML = `<div class="sld_inner">${slideData_fin.content}</div>`;
-    sld_fin.onclick = (event)=>{
-        slide_number = 'fin';
-        sp_id.innerText = slide_number;
-        pintBtnActive(slide_number);
-        pintSldActive(slide_number);
-        insertarDatos('slides', 'slide_actual', slide_number);
-    };
-    elc_lista_inner.append(sld_fin);    
 }
 
 function resetBtnActive(){
@@ -272,50 +217,48 @@ function pintSldActive(slide_number){
     });
 }
 
+function pintSlideNext(slide_number = null){
+    console.log('=== function pintSlideNext() ===');
+
+    if(!slide_number) return;
+
+    //si existe este slide_number
+    if(slide_number >= minVal && slide_number <= maxVal){
+        if(obj_temaData){
+            let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
+    
+            if(Object.keys(slideData).length !== 0){
+                console.log(slideData);
+    
+                wr_vista_next.style.backgroundImage = `url(${slideData.bg})`;
+                //${obj_temaData.titulo}
+    
+                wr_vista_next.querySelector('.vista_inner').innerHTML = `                
+                    ${slideData.content}
+                `;
+            }else{
+                console.log('contenido no está definido');
+            }        
+        }
+    }else{
+        //no existe este slide_number. Muestro bg negro
+        wr_vista_next.style.background = 'black';
+        wr_vista_next.querySelector('.vista_inner').innerHTML = '';
+    }
+}
+
 function goToSlide(dir = null){
     console.log(' === function goToSlide()===');
     
     if(dir == null) return;    
 
-    if(dir == 'prev'){
-        switch (slide_number) {
-            case 'inicio':
-                slide_number = 'inicio';
-                break;
-
-            case minVal:
-                slide_number = 'inicio';
-                break;
-
-            case 'fin':
-                slide_number = maxVal;
-                break;
-        
-            default:
-                slide_number--;
-                break;
-        }        
+    if(dir == 'prev'){       
+        slide_number--;
         console.log('prev. slide_number', slide_number);        
     }
     
     if(dir == 'next'){
-        switch (slide_number) {       
-            case 'inicio':
-                slide_number = 1;
-                break;
-
-            case maxVal:
-                slide_number = 'fin';
-                break;
-
-            case 'fin':
-                slide_number = 'fin';
-                break;
-        
-            default:
-                slide_number++;
-                break;
-        }
+        slide_number++;
         console.log('next. slide_number', slide_number);
     }
 
@@ -325,8 +268,11 @@ function goToSlide(dir = null){
     sp_id.innerText = slide_number;
     pintBtnActive(slide_number);
     pintSldActive(slide_number);
+    pintSlideNext((Number(slide_number) + 1).toString());
 
     insertarDatos('slides', 'slide_actual', slide_number);    
     
     console.log(' end === function goToSlide()===');
 }
+
+

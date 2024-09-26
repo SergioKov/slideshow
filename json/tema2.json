@@ -3,14 +3,9 @@
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
-            "slide_number": "inicio",
+            "slide_number": "0",
             "bg": "./temas/tema2/fondo_opera.jpg",
             "content": "<h1>Titulo Inicio</h1><p>algun texto INICIO</p>"
-        },
-        {
-            "slide_number": "fin",
-            "bg": "./temas/tema2/fondo_opera_fin.jpg",
-            "content": "<h1>Titulo Fin</h1><p>algun texto FIN</p>"
         },
         {
             "slide_number": "1",
@@ -71,6 +66,11 @@
             "slide_number": "12",
             "bg": "./temas/tema2/preview_slide_12.jpg",
             "content": ""
+        },
+        {
+            "slide_number": "13",
+            "bg": "./temas/tema2/fondo_opera_fin.jpg",
+            "content": "<h1>Titulo Fin</h1><p>algun texto FIN</p>"
         }
     ]
 }

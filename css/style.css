@@ -5,28 +5,105 @@
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background: linear-gradient(to bottom right, white 0%, #9dd3fd 10%, #1875bf 45%, #012643 100%);
     color: white;
-    min-height: 100vh;
+    height: 100%;
     font-family: 'Roboto Slab',Arial,Tahoma, 'sans serif';
+    width: 100%;
+    /* overflow: hidden; */
 }
 
-.body_bg {
+
+
+#header {
+    background: black;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    color: white;
+    overflow: hidden;
+}
+#main {
+    position: relative;
+    /* top: 38px; */
+    background: #851313;
+    /* background: linear-gradient(to bottom right, white 0%, #9dd3fd 10%, #1875bf 45%, #012643 100%); */
+    margin: 0;
+    /* overflow: hidden;*/
+}
+#sidebar {
+    width: 30%;
+    display: block;
+    overflow: hidden;
+    background: grey;
+}
+.bl_head {
+    background: black;
+    border-radius: 5px 5px 0 0;
+    padding: 5px;
+    text-align: center;
+}
+.side_body {
+    background: #8BC34A;
+    height: 780px;
+    overflow: auto;
+}
+.next_body {
+    background: rgb(96, 11, 11);
+    height: 780px;
+}
+
+#nextpart {
+    width: 70%;
+    display: block;
+    overflow: hidden;
+    background: #246fa4;
+}
+
+#main_inner{
+    padding: 5px;
+}
+
+#section1{
+    background: orange;
+}
+#section1_inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    width: 100%;
+}
+
+#section2{
+    background: purple;
+}
+
+#footer {
+    background: #1875bf;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+
+
+
+
+.bg_show {
     background: #000000;
-    background-size: contain;
-    background-position: center center;
-    background-repeat: no-repeat;
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
     /* background-image: url('../images/images1.jpg'); */
     transition: background-image 1s ease-in-out;
 }
 
-#body_nav{
-    
-}
-
-#body_show{
+#body_nav,
+#body_show {
     background: black;
 }
 
@@ -75,18 +152,13 @@ button{
     color: #ffffff;
 }
 
-#wr_init {
-    display: flex;
-    justify-content: space-between;
-    background: #dbdbdb;
-    border: 1px solid grey;
-}
+
 
 #wr_nav {
     display: flex;
     justify-content: space-between;
-    background: #bacdba;
-    border: 1px solid #879787;
+    /* background: #bacdba; */
+    /* border: 1px solid #879787; */
     align-items: center;
 }
 
@@ -107,13 +179,12 @@ button{
     justify-content: flex-start;
     gap: 10px;
     width: 33vw;
-    overflow: auto;
+    /* overflow: auto; */
 }
 
-#wr_init,
 #wr_nav,
 #wr_btns_slides{
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     margin: 5px;
 }
@@ -135,23 +206,69 @@ button{
     margin: 5px;
     height: calc(64vw*0.5625);
     min-width: 200px;
+    margin-top: calc(3vh + 1px);
+    background: #00000040;
+    position: relative;
 }
 
 .lista_inner {
     margin: auto;
     padding: 25px;
+    overflow: auto;
 }
     
-#wr_vista_slides {
+#wr_vista_next {
     width: 64vw;
     height: calc(64vw * 0.5625);
     /* width: 640px; */
     /* height: calc(640px * 0.5625); */
     /* border: 3px solid #9E9E9E; */
     margin: 5px;
-    min-width: 640px;
-    min-height: 360px;
+    min-width: 160px;
+    min-height: 90px;
+    position: relative;
+    margin-top: calc(3vh + 1px);
+    border-radius: 0 0 5px 5px;
+
 }
+
+#wr_vista_slides {
+    width: calc(98vw - 10px);
+    height: calc((98vw - 10px)* 0.5625);
+    /* width: 640px; */
+    /* height: calc(640px * 0.5625); */
+    /* border: 3px solid #9E9E9E; */
+    margin: 5px 5px;
+    min-width: 160px;
+    min-height: 90px;
+    position: relative;
+    margin-top: calc(3vh + 1px);
+}
+#shapka_vista{
+    display: flex;
+    justify-content: space-between;
+}
+.shapka {
+    position: absolute;
+    background: black;
+    padding: 5px;
+    text-align: center;
+    width: -webkit-fill-available;
+    top: calc(-3vh - 1px);
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #909090;
+}
+
+
+#wr_vista_slides .vista_inner {
+    top: calc(3vh + 1px);
+    position: relative;
+}
+.vista_inner {
+    margin: 20px;
+}
+
+
 
 .sld {
     background-color: green;
@@ -172,7 +289,7 @@ button{
 
 
 
-#slide_contenedor {
+#contenedor_show {
     /* margin: 20px; */
     /* background: green; */
     width: calc(100vh/0.5625);
@@ -187,9 +304,8 @@ button{
     background-size: contain;
 }
 
-.vista_inner {
-    margin: 20px;
-}
+
+
 
 
 
@@ -223,5 +339,12 @@ button{
     border-radius: 50%;
     min-width: 40px;
     min-height: 40px;
+}
+
+.btn,
+.sld,
+#wr_vista_next
+{
+    cursor: pointer;
 }
 

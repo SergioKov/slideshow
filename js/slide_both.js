@@ -6,7 +6,7 @@ async function crear_obj_temaData(url) {
     obj_temaData = await make_obj_temaData(url);
     //console.log(obj_lang);
 
-    //slideShowElement.classList.add('body_bg');
+    //slideShowElement.classList.add('bg_show');
     slideShowElement.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
 
     if(window.location.pathname === '/slide_nav.php'){

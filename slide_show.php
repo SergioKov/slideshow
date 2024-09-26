@@ -39,7 +39,7 @@ $conn->close();
 
 <h3 style="display:none;">Slide actual: <span id="sp_id">...</span></h3>
 
-<div id="slide_contenedor" class="body_bg">
+<div id="contenedor_show" class="bg_show">
     <div class="vista_inner">
         
     </div>
