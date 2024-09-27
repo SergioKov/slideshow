@@ -161,7 +161,7 @@ button{
 
 #wr_nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* background: #bacdba; */
     /* border: 1px solid #879787; */
     align-items: center;
