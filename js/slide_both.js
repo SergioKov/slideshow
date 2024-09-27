@@ -6,7 +6,6 @@ async function crear_obj_temaData(url) {
     obj_temaData = await make_obj_temaData(url);
     //console.log(obj_lang);
 
-    //slideShowElement.classList.add('bg_show');
     slideShowElement.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
 
     if(window.location.pathname === '/slide_nav.php'){
@@ -37,12 +36,13 @@ async function fetchDataToJson(url) {
     return data;
 }
 
-function pintSlide(slide_number = null){
-    console.log('=== function pintSlide() ===');
+function pintSlideActive(slide_number = null){
+    console.log('=== function pintSlideActive() ===');
     
-    if(!slide_number) return;
-
-    slide_number = (!['"inicio"','"fin"'].includes(slide_number)) ? slide_number.toString() : slide_number ; 
+    if(slide_number == null) return;
+    if(!isNaN(slide_number)) {
+        slide_number = slide_number.toString();
+    }
 
     if(obj_temaData){
         let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
@@ -53,7 +53,7 @@ function pintSlide(slide_number = null){
             slideShowElement.style.backgroundImage = `url(${slideData.bg})`;
             //${obj_temaData.titulo}
 
-            slideShowElement.querySelector('.vista_inner').innerHTML = `                
+            slideShowElement.innerHTML = `                
                 ${slideData.content}
             `;
         }else{

@@ -1,5 +1,5 @@
 {
-    "titulo": "Eurekar",
+    "titulo": "Tema4",
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
@@ -9,17 +9,17 @@
         },
         {
             "slide_number": "1",
-            "bg": "./temas/tema4/tema4.png",
+            "bg": "./temas/tema4/Diapositiva1.jpg",
             "content": ""
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema4/tema4.png",
+            "bg": "./temas/tema4/Diapositiva2.jpg",
             "content": ""
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema4/tema4.png",
+            "bg": "./temas/tema4/Diapositiva3.jpg",
             "content": ""
         },
         {

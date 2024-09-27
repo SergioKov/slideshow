@@ -46,6 +46,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
 
     if($_SERVER['REQUEST_METHOD'] === 'GET'){//para hacer test...
         // Obtener usuario y contraseña del cuerpo de la solicitud
+        $id_tema = isset($_GET['id_tema']) ? $_GET['id_tema'] : null ;
         $tabla = isset($_GET['tabla']) ? $_GET['tabla'] : null ;
         $campo = isset($_GET['campo']) ? $_GET['campo'] : null ;
 
@@ -61,6 +62,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
         }
         
         //para que los datos sean iguales como en POST
+        $datos['id_tema'] = $id_tema;
         $datos['tabla'] = $tabla;
         $datos['campo'] = $campo;
     }
@@ -87,6 +89,7 @@ if( true /*isset($_SESSION['id_user'])*/ ){
 
 include('includes/connect_db.php');
 
+//$id_tema = $conn->real_escape_string($datos['id_tema']);//vkladki
 $tabla = $conn->real_escape_string($datos['tabla']);//vkladki
 $campo = $conn->real_escape_string($datos['campo']);//arrTabs
 //echo_json_x($datos, 'datos');
@@ -94,18 +97,19 @@ $campo = $conn->real_escape_string($datos['campo']);//arrTabs
 
 //busco si hay registro
 // Preparar y ejecutar la consulta
-$sql_init = "SELECT $campo 
-            FROM $tabla 
-            WHERE id_user = '$id_user_logged' 
+$sql_init = "SELECT slide_actual, id_tema  
+            FROM slides 
+            WHERE id_user = '$id_user_logged'
 ";
-$sql_prep = "SELECT $campo 
-            FROM $tabla 
-            WHERE id_user = '$id_user_logged' 
-";
-$arr_params = [$campo, $tabla, $id_user_logged];
-$sql_preparada = prepararQuery($conn, $sql_prep, $arr_params);
-$result = $conn->query($sql_preparada);
-//echo_json_x($sql_preparada, 'sql');
+//-- AND id_tema = '$id_tema'
+//$sql_prep = "SELECT $campo 
+//            FROM $tabla 
+//            WHERE id_user = '$id_user_logged' 
+//";
+//$arr_params = [$campo, $tabla, $id_user_logged];
+//$sql_preparada = prepararQuery($conn, $sql_prep, $arr_params);
+$result = $conn->query($sql_init);
+//echo_json_x($sql_init, 'sql');
 
 if($result->num_rows > 0){   
     $row = $result->fetch_assoc();
@@ -113,9 +117,11 @@ if($result->num_rows > 0){
     
     $hay_id_user_en_tabla = true;
     $valorCampo = $row[$campo];
+    $valorIdTema = $row['id_tema'];
     $data = [
         'success' => true,
-        'valorCampo' => $valorCampo
+        'valorCampo' => $valorCampo,
+        'valorIdTema' => $valorIdTema
     ];
 
 }else{

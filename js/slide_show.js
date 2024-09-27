@@ -4,6 +4,7 @@ const slideShowElement = contenedor_show;//toda la página
 
 let delay_fn = 1000;
 let slide_shown = sp_id.innerText;
+let id_tema_shown = '1';//string obligatorio
 
 
 lanzarIntentos('slides', 'slide_actual');
@@ -40,20 +41,44 @@ async function obtenerDatosDeBD(tabla, campo){
         }
 
         const data = await response.json();
-        // const data = await response.text();//test
+        //const data = await response.text();//test
         //console.log(`Datos de la tabla ${tabla} y campo ${campo}: `);
         console.log('data de bd: ',data);  
         
         if(data.success){
             //console.log('success is true');
 
-            if(data.valorCampo !== slide_shown){//si es distinto, lo pinto
-                console.log('[if] --- SE HA CAMBIADO SLIDE ---');
+            if(data.valorIdTema !== id_tema_shown){
+                id_tema_shown = data.valorIdTema;
+                url = `./json/tema${data.valorIdTema}.json`;
                 
-                slide_shown = data.valorCampo;
-                sp_id.textContent = data.valorCampo;
+                aaa();
+                async function aaa(){
+                    console.log('antes');
+                    await crear_obj_temaData(url);
+                    console.log('despues');
 
-                pintSlide(data.valorCampo);
+                    if(data.valorCampo !== slide_shown){//si es distinto, lo pinto
+                        console.log('[if] --- SE HA CAMBIADO SLIDE ---');
+                        
+                        slide_shown = data.valorCampo;
+                        sp_id.textContent = data.valorCampo;
+                    }
+    
+                    pintSlideActive(data.valorCampo);                    
+
+                }
+
+            }else{
+
+                if(data.valorCampo !== slide_shown){//si es distinto, lo pinto
+                    console.log('[if] --- SE HA CAMBIADO SLIDE ---');
+                    
+                    slide_shown = data.valorCampo;
+                    sp_id.textContent = data.valorCampo;
+                }
+
+                pintSlideActive(data.valorCampo);
             }
 
             console.log('desde obtenerDatosDeBD() - llamo lanzarIntentos()');

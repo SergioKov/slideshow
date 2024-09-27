@@ -116,6 +116,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
 
     //debug_x($datos['arr']); 
     
+    $id_tema = $conn->real_escape_string($datos['id_tema']);//get parameter
     $tabla = $conn->real_escape_string($datos['tabla']);//vkladki
     $campo = $conn->real_escape_string($datos['campo']);//arrTabs
     $arr = json_encode($datos['arr'], JSON_UNESCAPED_UNICODE);//arrTabs //no usar $conn->real_escape_string($datos['arr']) ya que retorna NULL
@@ -162,23 +163,25 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
     // Realizar la inserción o (update) en la base de datos 
     if($hay_id_user_en_tabla){
         //hago update
-        $sql2_up_init = "UPDATE $tabla SET 
-                    $campo = '$arr',
+        $sql2_up_init = "UPDATE slides SET 
+                    slide_actual = '$arr',
+                    id_tema = '$id_tema',
                     updated_at = '$fechaHoraActual'
                     WHERE id_user = '$id_user_logged'
         ";
-        $sql2_up_prep = "UPDATE $tabla SET 
-                    $campo = $sign,
-                    updated_at = '$fechaHoraActual' 
-                    WHERE id_user = $sign 
-        ";
-        //$arr paso tal cual ya que los datos pueden tener dentro '?' y romper sql
-        $arr_params = [$arr, $id_user_logged];
-        $sql2_up_preparada = prepararQuery($conn, $sql2_up_prep, $arr_params, $sign);
-        $result2 = $conn->query($sql2_up_preparada);
+        //$sql2_up_prep = "UPDATE $tabla SET 
+        //            $campo = $sign,
+        //            updated_at = '$fechaHoraActual' 
+        //            WHERE id_user = $sign 
+        //";
+        ////$arr paso tal cual ya que los datos pueden tener dentro '?' y romper sql
+        //$arr_params = [$arr, $id_user_logged];
+        //$sql2_up_preparada = prepararQuery($conn, $sql2_up_prep, $arr_params, $sign);
+        $result2 = $conn->query($sql2_up_init);
         //debug_x($sql2_up_preparada, 'sql2_up_preparada');
         //echo_json_x($sql2_up_preparada, 'sql2_up_preparada');	
     }else{
+        /*
         //hago insert
         $sql2_in_init = "INSERT INTO $tabla (id_user, $campo, created_at) 
                         VALUES ('$id_user_logged', '$arr', '$fechaHoraActual')
@@ -191,6 +194,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
         $sql2_in_preparada = prepararQuery($conn, $sql2_in_prep, $arr_params, $sign);
         $result2 = $conn->query($sql2_in_preparada);
         //debug_x($sql2_in_preparada, 'sql2_in_preparada');
+        */
     }
 	//echo_json_x($result2, 'result2');
 
