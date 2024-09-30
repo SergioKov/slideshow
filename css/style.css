@@ -239,13 +239,15 @@ button{
 
 
 .sld {
-    background-color: green;
+    background-color: black;
     width: 25vw;
     height: calc(25vw*0.5625);
     border-radius: 3px;
     margin-bottom: 25px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
 .sld_inner {
     padding: 20px;
     
@@ -321,3 +323,87 @@ button{
     cursor: pointer;
 }
 
+
+#wr_vista_next,
+#wr_vista_actual,
+#contenedor_show,
+.sld
+{
+    /*background: purple;*/
+}
+
+.slide_body {
+    width: 98vw;
+    height: calc(98vw*0.5625);
+    outline: 1vw solid green;
+    overflow: hidden;
+    margin: 0 auto;
+    overflow: auto;
+    background: black;
+}
+
+.slide_body{
+/*start of slide_body*/
+
+.slide_body_inner {
+    background: brown;
+    margin: 20px;
+}
+
+.text_center{
+    text-align: center;
+}
+h1 {
+    font-size: 3rem;
+}
+h2{
+    font-size: 2.8rem;
+}
+h3{
+    font-size: 2.6rem;
+}
+h4{
+    font-size: 2.4rem;
+}
+h5{
+    font-size: 2.2rem;
+}
+h6{
+    font-size: 1rem;
+}
+p{
+    font-size: 1.2rem;
+
+}
+
+/*end of slide_body*/
+}
+
+
+
+
+.slide_body{
+    /*start*/
+        
+    h1 {
+        font-size: 18rem;
+        color: #3fa9d8;
+        margin-bottom: 2rem;
+        margin-top: -8rem;
+    }
+    h2{
+        font-size: 8rem;
+    }
+    .wr {
+        margin: auto auto;
+        text-align: center;
+        display: flex;
+        /* background: green; */
+        flex-direction: column;
+        padding-top: 6rem;
+        /* margin-bottom: -23px; */
+        margin-top: 14rem;
+    }
+    
+    
+    /*end*/ 

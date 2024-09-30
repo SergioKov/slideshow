@@ -5,7 +5,7 @@
         {
             "slide_number": "0",
             "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": "<h1>Titulo Inicio</h1><p>algun texto INICIO</p>"
+            "content": "<div class=\"slide_body_inner\"><h1>Titulo Inicio</h1><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p><p>algun texto INICIO</p></div>"
         },
         {
             "slide_number": "1",
