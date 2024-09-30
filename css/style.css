@@ -24,6 +24,7 @@ body {
     width: 100%;
     color: white;
     overflow: hidden;
+    z-index: 1;
 }
 #main {
     position: relative;
@@ -56,6 +57,7 @@ body {
 .next_body {
     background: #600b0b;
     height: 780px;
+    overflow: auto;
 }
 
 #nextslide {

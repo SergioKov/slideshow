@@ -47,6 +47,7 @@ function mySizeWindow(){
 
     let ecl_bl_head = eid_sidebar.querySelector('.bl_head');
     let ecl_side_body = eid_sidebar.querySelector('.side_body');
+    let ecl_next_body = eid_nextslide.querySelector('.next_body');
     
     let ecl_actual_head = eid_section2.querySelector('.actual_head');
     let ecl_actual_body = eid_section2.querySelector('.actual_body');
@@ -76,12 +77,16 @@ function mySizeWindow(){
     
     let sidebar_h = section1_h;
     eid_sidebar.style.height = sidebar_h + 'px'; 
+    eid_nextslide.style.height = sidebar_h + 'px'; 
     
     let side_body_h = 
       sidebar_h
     - bl_head_h
     ;    
     ecl_side_body.style.height = side_body_h + 'px';
+    
+    let next_body_h = side_body_h;
+    ecl_next_body.style.height = next_body_h + 'px';
 
     let vista_slide_next_h = wr_vista_next_w * 0.5625;//alto de NextSlide
     wr_vista_next.style.height = vista_slide_next_h + 'px';
