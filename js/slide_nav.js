@@ -1,11 +1,4 @@
-let id_tema = new URL(window.location.href).searchParams.get('id_tema');
-//localStorage.setItem('id_tema',id_tema);
 
-if(id_tema){
-    url = `./json/tema${id_tema}.json`;
-    //actualizarIdTema();
-    insertarDatos('slides', 'slide_actual', 0);
-}
 
 const sp_id = document.getElementById('sp_id');
 const wr_vista_actual = document.getElementById('wr_vista_actual');
@@ -17,11 +10,9 @@ let maxVal = 13;
 let is_started = false;
 let is_finished = false;
 
-
-
-
-
 const eid_header = document.getElementById('header'); 
+const eid_sel_tema = document.getElementById('sel_tema');
+
 const eid_btn_section = document.getElementById('btn_section'); 
 const eid_sidebar = document.getElementById('sidebar'); 
 const eid_nextslide = document.getElementById('nextslide'); 
@@ -37,7 +28,24 @@ const eid_section2 = document.getElementById('section2');
 
 const eid_footer = document.getElementById('footer');
 
-    
+let id_tema = new URL(window.location.href).searchParams.get('id_tema');
+//localStorage.setItem('id_tema',id_tema);
+
+if(id_tema){
+    url = `./json/tema${id_tema}.json`;
+    //actualizarIdTema();
+    insertarDatos('slides', 'slide_actual', 0);
+    checkTema(id_tema);
+    changeTema(id_tema);
+    setTimeout(()=>{
+        //alert(444);
+        //iniciarSlides();
+    },2000);
+}
+
+//=====================================================================================//
+// F U N C T I O N S
+//=====================================================================================//
 function mySizeWindow(){
     
     //let window_w = window.innerWidth;
@@ -265,6 +273,9 @@ function makeSlides(){
     const ecl_side_body = document.querySelector('.side_body');
     const ecl_lista_inner = document.querySelector('.lista_inner');
 
+    wr_btns_slides.innerHTML = '';//reset
+    ecl_lista_inner.innerHTML = '';//reset
+
     for (let index = minVal; index <= maxVal; index++) {
 
         let slideData = obj_temaData.slides.find(v => v.slide_number === index.toString());
@@ -336,18 +347,22 @@ function resetSlideActual(){
 function pintBtnActive(slide_number){
     resetBtnActive();
     let btn_active = document.querySelector('button[data-slide_number="' + slide_number + '"]');
-    btn_active.classList.add('btn_active');
+    if(btn_active !== null){
+        btn_active.classList.add('btn_active');
+    }
 }
 
 function pintSldActive(slide_number){
     resetSldActive();
     let sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
-    sld_active.classList.add('sld_active');
-    sld_active.scrollIntoView({
-        behavior: "smooth",  // Animación suave al desplazar
-        block: "center",     // Alinear el elemento en el centro verticalmente
-        inline: "center"     // Alinear el elemento en el centro horizontalmente
-    });
+    if(sld_active !== null){
+        sld_active.classList.add('sld_active');
+        sld_active.scrollIntoView({
+            behavior: "smooth",  // Animación suave al desplazar
+            block: "center",     // Alinear el elemento en el centro verticalmente
+            inline: "center"     // Alinear el elemento en el centro horizontalmente
+        });
+    }
 }
 
 function pintSlideNext(slide_number = null){
@@ -357,7 +372,7 @@ function pintSlideNext(slide_number = null){
 
     //si existe este slide_number
     if(slide_number >= minVal && slide_number <= maxVal){
-        if(obj_temaData){
+        if(Object.keys(obj_temaData).length > 0){
             let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
     
             if(Object.keys(slideData).length !== 0){
@@ -408,4 +423,56 @@ function goToSlide(dir = null){
     console.log(' end === function goToSlide()===');
 }
 
+
+function checkTema(id_tema){
+    const eid_sel_tema = document.getElementById('sel_tema');
+    eid_sel_tema.querySelectorAll('option').forEach(opt=>{
+        opt.removeAttribute('selected');
+    });
+    eid_sel_tema.querySelector(`option[value="${id_tema}"]`).selected = true;
+    eid_sel_tema.querySelector(`option[value="${id_tema}"]`).setAttribute('selected',true);
+}
+
+let arr_temas = [1,2,3,4,5,6,7];
+
+async function changeTema(id_tema) {
+    console.log('=== function changeTema(id_tema) ==='); 
+    console.log('id_tema: ',id_tema);
+
+    if(arr_temas.includes(Number(id_tema))){
+        let url = `./json/tema${id_tema}.json`;
+        obj_temaData = await fetchDataToJson(url);
+        //console.log('obj_lang:');
+        //console.log(obj_lang);
+
+        let url_href = new URL(window.location.href);
+        url_href.searchParams.set('id_tema',id_tema);
+        let params_new = '?';
+        url_href.searchParams.forEach((value,key)=>{ 
+            //console.log(`${key}: ${value}`);
+            params_new += `&${key}=${value}`;
+        });
+        //window.location.origin => 'https://bibleqt.es'
+        //window.location.pathname => '/'
+        let new_url_ref = window.location.origin + window.location.pathname + params_new;
+        //console.log("[changeLang()] - URL nueva completa con ref. new_url_ref: ", new_url_ref);
+
+        window.history.pushState(null, "Título de la página", new_url_ref);
+        
+    }else{
+        console.error(`No existe este id_tema '${id_tema}'`);
+        changeLang(arr_temas[0]);//'ru' por defecto
+        //return false;
+    }
+    checkTema(id_tema);
+    makeSlides();
+    pintSlideNext(slide_number);
+    pintSlideActive(slide_number);
+    
+
+    
+    //if(hay_sesion && obj_ajustes_is_loaded){
+    //    guardarEnBd('ajustes','obj_ajustes',obj_ajustes);
+    //}
+}
 

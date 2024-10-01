@@ -56,6 +56,12 @@ function pintSlideActive(slide_number = null){
             slideShowElement.innerHTML = `                
                 ${slideData.content}
             `;
+
+            if(slideData.style){
+                const st = document.createElement('style');
+                st.innerHTML = slideData.style;
+                document.head.append(st);
+            }
         }else{
             console.log('contenido no está definido');
         }        

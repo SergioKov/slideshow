@@ -1,29 +1,34 @@
 <style>
+
+body {
+    background: black;
+}
+
+
 .slide_body{
-/*start*/
+
     
 h1 {
-    font-size: 18rem;
+    font-size: calc(100vw * 19 * 0.01);
+    margin-bottom: calc(100vw * 6 * 0.01);
+    margin-top: calc(100vw * -8 * 0.01);
     color: #3fa9d8;
-    margin-bottom: 2rem;
-    margin-top: -8rem;
 }
-h2{
-    font-size: 8rem;
+h2 {
+    font-size: calc(100vw * 8 * 0.01);
+    margin-top: calc(100vw * 13 * 0.01);
 }
 .wr {
     margin: auto auto;
     text-align: center;
     display: flex;
-    /* background: green; */
     flex-direction: column;
-    padding-top: 6rem;
-    /* margin-bottom: -23px; */
-    margin-top: 14rem;
+    padding-top: calc(100vw * 1 * 0.01);
+    margin-top: calc(100vw * 2 * 0.01);
 }
 
 
-/*end*/    
+  
 }
 </style>
 
@@ -33,4 +38,26 @@ h2{
     <h2>DISPLAYING</h2>
     <h1>DATA</h1>
 </div>
+
+<script>
+
+window.addEventListener('load',()=>{
+    myFontSize();
+});
+
+window.addEventListener('resize',()=>{
+    myFontSize();
+});
+
+function myFontSize(){
+    console.log('=== function myFontSize() ===');
+
+    const tag_h1 = document.querySelector('h1');
+    const tag_h2 = document.querySelector('h2');
+
+    //tag_h1.style.fontSize = ;
+
+}
+
+</script>
     

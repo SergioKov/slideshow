@@ -1,76 +1,76 @@
 {
-    "titulo": "<h1>Tema2</h1>",
+    "titulo": "tema5",
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
             "slide_number": "0",
-            "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": "<h1>Titulo 0</h1><p>algun texto 0</p>"
+            "bg": "./temas/tema5/Diapositiva13.jpg",
+            "content": ""
         },
         {
             "slide_number": "1",
-            "bg": "./temas/tema2/preview_slide_1.jpg",
-            "content": "<h1>Titulo 1</h1><p>algun texto 1</p>"
+            "bg": "./temas/tema5/Diapositiva1.jpg",
+            "content": ""
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema2/preview_slide_2.jpg",
-            "content": "<h1>Titulo 2</h1><p>algun texto 2</p>"
+            "bg": "./temas/tema5/Diapositiva2.jpg",
+            "content": ""
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema2/preview_slide_3.jpg",
+            "bg": "./temas/tema5/Diapositiva3.jpg",
             "content": ""
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema2/preview_slide_4.jpg",
+            "bg": "./temas/tema5/Diapositiva4.jpg",
             "content": ""
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema2/preview_slide_5.jpg",
+            "bg": "./temas/tema5/Diapositiva5.jpg",
             "content": ""
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema2/preview_slide_6.jpg",
+            "bg": "./temas/tema5/Diapositiva6.jpg",
             "content": ""
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema2/preview_slide_7.jpg",
+            "bg": "./temas/tema5/Diapositiva7.jpg",
             "content": ""
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema2/preview_slide_8.jpg",
+            "bg": "./temas/tema5/Diapositiva8.jpg",
             "content": ""
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema2/preview_slide_9.jpg",
+            "bg": "./temas/tema5/Diapositiva9.jpg",
             "content": ""
         },
         {
             "slide_number": "10",
-            "bg": "./temas/tema2/preview_slide_10.jpg",
+            "bg": "./temas/tema5/Diapositiva10.jpg",
             "content": ""
         },
         {
             "slide_number": "11",
-            "bg": "./temas/tema2/preview_slide_11.jpg",
+            "bg": "./temas/tema5/Diapositiva11.jpg",
             "content": ""
         },
         {
             "slide_number": "12",
-            "bg": "./temas/tema2/preview_slide_12.jpg",
+            "bg": "./temas/tema5/Diapositiva12.jpg",
             "content": ""
         },
         {
             "slide_number": "13",
-            "bg": "./temas/tema2/fondo_opera_fin.jpg",
-            "content": "<h1>Titulo Fin</h1><p>algun texto FIN</p>"
+            "bg": "./temas/tema5/fondo_opera_fin.jpg",
+            "content": ""
         }
     ]
 }

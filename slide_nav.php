@@ -38,9 +38,22 @@ $conn->close();
         <div id="wr_nav">
             <button id="goPrev" class="btn" onclick="goToSlide('prev')">Prev</button>
 
-            <button id="btn_iniciar" class="btn btn_ini_fin" onclick="iniciarSlides()">Iniciar</button>
-            <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
-            <button id="btn_finalizar" class="btn btn_ini_fin" onclick="finalizarSlides()">Finalizar</button> 
+            <div class="centralPart">                
+                
+                <select id="sel_tema" onchange="changeTema(this.value)">
+                    <option value="1">tema1</option>
+                    <option value="2">tema2</option>
+                    <option value="3">tema3</option>
+                    <option value="4">tema4</option>
+                    <option value="5">tema5</option>
+                    <option value="6">tema6</option>
+                    <option value="7">tema7</option>
+                </select>
+
+                <button id="btn_iniciar" class="btn btn_ini_fin" onclick="iniciarSlides()">Iniciar</button>
+                <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
+                <button id="btn_finalizar" class="btn btn_ini_fin" onclick="finalizarSlides()">Finalizar</button> 
+            </div>
 
             <button id="goNext" class="btn" onclick="goToSlide('next')">Next</button>  
         </div>
