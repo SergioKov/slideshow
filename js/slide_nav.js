@@ -468,6 +468,7 @@ async function changeTema(id_tema) {
     makeSlides();
     pintSlideNext(slide_number);
     pintSlideActive(slide_number);
+    insertarDatos('slides', 'slide_actual', slide_number);
     
 
     
