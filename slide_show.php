@@ -17,8 +17,6 @@ include('includes/connect_db.php');
 $conn->close();
 ?>
 
-<h3 style="display:none;">Slide actual: <span id="sp_id">...</span></h3>
-
 <div id="contenedor_show" class="bg_show">
     <div class="vista_inner">
         

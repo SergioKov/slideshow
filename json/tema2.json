@@ -1,21 +1,22 @@
 {
+    "id_tema": "2",
     "titulo": "<h1>Tema2</h1>",
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
             "slide_number": "0",
             "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": "<h1>Titulo 0</h1><p>algun texto 0</p>"
+            "content": ""
         },
         {
             "slide_number": "1",
             "bg": "./temas/tema2/preview_slide_1.jpg",
-            "content": "<h1>Titulo 1</h1><p>algun texto 1</p>"
+            "content": ""
         },
         {
             "slide_number": "2",
             "bg": "./temas/tema2/preview_slide_2.jpg",
-            "content": "<h1>Titulo 2</h1><p>algun texto 2</p>"
+            "content": ""
         },
         {
             "slide_number": "3",

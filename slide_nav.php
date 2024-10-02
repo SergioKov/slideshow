@@ -34,11 +34,12 @@ $conn->close();
 
 <header id="header">
     <div class="header_inner">
-        <h3 style="display:none;">Slide to insert en bd: <span id="sp_id">...</span></h3>
         <div id="wr_nav">
             <button id="goPrev" class="btn" onclick="goToSlide('prev')">Prev</button>
 
             <div class="centralPart">                
+                
+                <button id="btn_iniciar" class="btn btn_ini_fin" data-info="iniciarSlides()">Iniciar</button>
                 
                 <select id="sel_tema" onchange="changeTema(this.value)">
                     <option value="1">tema1</option>
@@ -50,9 +51,8 @@ $conn->close();
                     <option value="7">tema7</option>
                 </select>
 
-                <button id="btn_iniciar" class="btn btn_ini_fin" onclick="iniciarSlides()">Iniciar</button>
                 <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
-                <button id="btn_finalizar" class="btn btn_ini_fin" onclick="finalizarSlides()">Finalizar</button> 
+                <button id="btn_finalizar" class="btn btn_ini_fin" data-info="finalizarSlides()">Finalizar</button> 
             </div>
 
             <button id="goNext" class="btn" onclick="goToSlide('next')">Next</button>  
@@ -83,7 +83,7 @@ $conn->close();
                         <div class="bl_head">Next Slide</div>
                         <div class="next_body">
                             <div class="vista_inner">
-                                <div id="wr_vista_next" class="bg_show" onclick="goToSlide('next')">
+                                <div id="wr_vista_next" class="bg_show">
                                 </div>
                             </div>
                         </div>

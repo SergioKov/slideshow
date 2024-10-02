@@ -30,24 +30,18 @@ async function make_obj_temaData(url){
     }    
 }
 
-async function fetchDataToJson(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
-function pintSlideActive(slide_number = null){
-    console.log('=== function pintSlideActive() ===');
+async function pintSlideActive(slide_number = null){
+    console.log('=== function pintSlideActive() ==='); 
     
     if(slide_number == null) return;
     if(!isNaN(slide_number)) {
         slide_number = slide_number.toString();
     }
 
-    if(obj_temaData){
+    if(Object.keys(obj_temaData).length > 0){
         let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
 
-        if(Object.keys(slideData).length !== 0){
+        if(typeof slideData !== 'undefined'){
             console.log(slideData);
 
             slideShowElement.style.backgroundImage = `url(${slideData.bg})`;

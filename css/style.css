@@ -324,6 +324,12 @@ button{
     width: 80px;
     height: 40px;
 }
+#btn_inicio {
+    margin-right: 1.5rem;
+}
+#btn_fin {
+    margin-left: 1.5rem;
+}
 .btn_ini_fin_sm {
     width: 60px;
     height: 40px;

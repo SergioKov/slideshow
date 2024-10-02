@@ -1,6 +1,5 @@
 
 
-const sp_id = document.getElementById('sp_id');
 const wr_vista_actual = document.getElementById('wr_vista_actual');
 const slideShowElement = wr_vista_actual;// solo un div para la vista
 
@@ -28,24 +27,35 @@ const eid_section2 = document.getElementById('section2');
 
 const eid_footer = document.getElementById('footer');
 
-let id_tema = new URL(window.location.href).searchParams.get('id_tema');
+const eid_btn_iniciar = document.getElementById('btn_iniciar');
+const eid_btn_finalizar = document.getElementById('btn_finalizar');
+
+let obj_temaData = {};
+
+let id_tema_get = new URL(window.location.href).searchParams.get('id_tema');
 //localStorage.setItem('id_tema',id_tema);
 
-if(id_tema){
-    url = `./json/tema${id_tema}.json`;
-    //actualizarIdTema();
-    insertarDatos('slides', 'slide_actual', 0);
+if(id_tema_get){
+    id_tema = id_tema_get;
+}else{
+    id_tema = 1;
+}
+
+let url = `./json/tema${id_tema}.json`;
+
+aaa();
+async function aaa(){
+    await insertarDatos('slides', 'slide_actual', 0, id_tema);
     checkTema(id_tema);
     changeTema(id_tema);
-    setTimeout(()=>{
-        //alert(444);
-        //iniciarSlides();
-    },2000);
+    iniciarSlides();
 }
+
 
 //=====================================================================================//
 // F U N C T I O N S
 //=====================================================================================//
+
 function mySizeWindow(){
     
     //let window_w = window.innerWidth;
@@ -127,6 +137,14 @@ window.addEventListener('resize',()=>{
     mySizeWindow();
 });
 
+eid_btn_iniciar.addEventListener('click',()=>{
+    iniciarSlides();
+});
+
+eid_btn_finalizar.addEventListener('click',()=>{
+    finalizarSlides();
+});
+
 
 
 function toggleSections(){
@@ -143,8 +161,13 @@ function toggleSections(){
     mySizeWindow();
 }
 
+async function fetchDataToJson(url) {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+}
 
-async function insertarDatos(tabla, campo, arr) {
+async function insertarDatos(tabla, campo, arr, id_tema = null) {
     console.log('=== function insertarDatos(tabla, campo, arr) ===');
 
     if(id_tema == null) id_tema = 1;
@@ -185,9 +208,26 @@ async function insertarDatos(tabla, campo, arr) {
             let text_show = data.mensaje;
             console.log(text_show + ` tabla: ${tabla}`);
 
-            if(Object.keys(obj_temaData).length > 0){
-                pintSlideActive(arr);
-            }
+            if(obj_temaData.id_tema !== id_tema){
+                aaa();
+                async function aaa(){
+                    let url = `./json/tema${id_tema}.json`;
+                    
+                    console.log('antes await make_obj_temaData(url)');
+                    obj_temaData = await make_obj_temaData(url);                    
+                    console.log('despues await make_obj_temaData(url)');
+
+                    if(Object.keys(obj_temaData).length > 0){
+                        pintSlideNext(Number(arr) + 1);
+                        pintSlideActive(arr);
+                    }
+                }
+            }else{
+                if(Object.keys(obj_temaData).length > 0){
+                    pintSlideNext(Number(arr) + 1);
+                    pintSlideActive(arr);
+                }
+            }            
 
         }else{
             let text_show = data.mensaje;
@@ -228,20 +268,19 @@ async function getSlideActual(tabla, campo){
             console.log('success is true');
 
             slide_number = data.valorCampo; 
-            //sp_id.textContent = slide_number;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
             pintSlideNext((Number(slide_number) + 1).toString());
 
             setTimeout(()=>{
                 if(Object.keys(obj_temaData).length > 0){
+                    pintSlideNext(Number(data.valorCampo) + 1);
                     pintSlideActive(data.valorCampo);
                 }
             },2000);
 
         }else{
             console.log('success is false');
-            sp_id.textContent = '---';
         }
 
     } catch (error) {
@@ -249,22 +288,22 @@ async function getSlideActual(tabla, campo){
     }
 }
 
-function iniciarSlides(){
+async function iniciarSlides(){
     slide_number = minVal;
     pintBtnActive(slide_number); 
     pintSldActive(slide_number); 
     pintSlideNext((Number(slide_number) + 1).toString()); 
     pintSlideActive(slide_number); 
-    insertarDatos('slides', 'slide_actual', slide_number);
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
 }
 
-function finalizarSlides(){
+async function finalizarSlides(){
     slide_number = maxVal;
     pintBtnActive(slide_number); 
     pintSldActive(slide_number);
     pintSlideNext((Number(slide_number) + 1).toString()); 
     pintSlideActive(slide_number);
-    insertarDatos('slides', 'slide_actual', slide_number);
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
 }
 
 function makeSlides(){
@@ -297,11 +336,10 @@ function makeSlides(){
         btn.dataset.slide_number = index;
         btn.onclick = (event)=>{
             slide_number = index;
-            sp_id.innerText = slide_number;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
             pintSlideNext((Number(slide_number) + 1).toString());    
-            insertarDatos('slides', 'slide_actual', index);
+            insertarDatos('slides', 'slide_actual', index, id_tema);
         };
         wr_btns_slides.append(btn);
         
@@ -314,11 +352,10 @@ function makeSlides(){
         sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
         sld.onclick = (event)=>{
             slide_number = index;
-            sp_id.innerText = slide_number;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
             pintSlideNext((Number(slide_number) + 1).toString());    
-            insertarDatos('slides', 'slide_actual', index);
+            insertarDatos('slides', 'slide_actual', index, id_tema);
         };
         ecl_lista_inner.append(sld);
     }
@@ -340,8 +377,7 @@ function resetSldActive(){
 
 function resetSlideActual(){
     slide_number = minVal;
-    //sp_id.innerText = slide_number;
-    insertarDatos('slides', 'slide_actual', slide_number);    
+    insertarDatos('slides', 'slide_actual', slide_number, id_tema);    
 }
 
 function pintBtnActive(slide_number){
@@ -369,13 +405,18 @@ function pintSlideNext(slide_number = null){
     console.log('=== function pintSlideNext() ===');
 
     if(!slide_number) return;
+    slide_number -= 1;
+
+    if(!isNaN(slide_number)) {
+        slide_number = slide_number.toString();
+    }
 
     //si existe este slide_number
     if(slide_number >= minVal && slide_number <= maxVal){
         if(Object.keys(obj_temaData).length > 0){
             let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
     
-            if(Object.keys(slideData).length !== 0){
+            if(typeof slideData !== 'undefined'){
                 console.log(slideData);
     
                 wr_vista_next.style.backgroundImage = `url(${slideData.bg})`;
@@ -413,12 +454,12 @@ function goToSlide(dir = null){
     slide_number = (slide_number < minVal) ? minVal : slide_number ;
     slide_number = (slide_number > maxVal) ? maxVal : slide_number ;  
 
-    sp_id.innerText = slide_number;
     pintBtnActive(slide_number);
     pintSldActive(slide_number);
     pintSlideNext((Number(slide_number) + 1).toString());
+    pintSlideActive((slide_number).toString());
 
-    insertarDatos('slides', 'slide_actual', slide_number);    
+    insertarDatos('slides', 'slide_actual', slide_number, id_tema);    
     
     console.log(' end === function goToSlide()===');
 }
@@ -433,17 +474,19 @@ function checkTema(id_tema){
     eid_sel_tema.querySelector(`option[value="${id_tema}"]`).setAttribute('selected',true);
 }
 
-let arr_temas = [1,2,3,4,5,6,7];
 
-async function changeTema(id_tema) {
+
+async function changeTema(id_tema_param) {
     console.log('=== function changeTema(id_tema) ==='); 
+    console.log('id_tema_param: ',id_tema_param);
+
+    id_tema = id_tema_param;
     console.log('id_tema: ',id_tema);
 
     if(arr_temas.includes(Number(id_tema))){
+
         let url = `./json/tema${id_tema}.json`;
         obj_temaData = await fetchDataToJson(url);
-        //console.log('obj_lang:');
-        //console.log(obj_lang);
 
         let url_href = new URL(window.location.href);
         url_href.searchParams.set('id_tema',id_tema);
@@ -459,19 +502,16 @@ async function changeTema(id_tema) {
 
         window.history.pushState(null, "Título de la página", new_url_ref);
         
+        checkTema(id_tema);
+        makeSlides();
+        iniciarSlides();
+        
     }else{
         console.error(`No existe este id_tema '${id_tema}'`);
         changeLang(arr_temas[0]);//'ru' por defecto
         //return false;
     }
-    checkTema(id_tema);
-    makeSlides();
-    pintSlideNext(slide_number);
-    pintSlideActive(slide_number);
-    insertarDatos('slides', 'slide_actual', slide_number);
-    
-
-    
+   
     //if(hay_sesion && obj_ajustes_is_loaded){
     //    guardarEnBd('ajustes','obj_ajustes',obj_ajustes);
     //}

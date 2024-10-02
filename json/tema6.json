@@ -1,4 +1,5 @@
 {
+    "id_tema": "6",
     "titulo": "tema6",
     "tema_bg": "./images/fondo_opera.png",
     "slides": [
@@ -69,7 +70,7 @@
         },
         {
             "slide_number": "13",
-            "bg": "./temas/tema6/fondo_opera_fin.png",
+            "bg": "./temas/tema6/Diapositiva13.png",
             "content": ""
         }
     ]

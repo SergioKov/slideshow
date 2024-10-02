@@ -1,4 +1,5 @@
 {
+    "id_tema": "1",
     "titulo": "Tema1",
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
