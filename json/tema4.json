@@ -4,13 +4,8 @@
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
-            "slide_number": "0",
-            "bg": "./temas/tema4/fondo1.jpg",
-            "content": ""
-        },
-        {
             "slide_number": "1",
-            "bg": "./temas/tema4/Diapositiva1.jpg",
+            "bg": "./temas/tema4/fondo1.jpg",
             "content": ""
         },
         {
@@ -61,16 +56,6 @@
         {
             "slide_number": "11",
             "bg": "./temas/tema4/Diapositiva11.jpg",
-            "content": ""
-        },
-        {
-            "slide_number": "12",
-            "bg": "./temas/tema4/Diapositiva12.jpg",
-            "content": ""
-        },
-        {
-            "slide_number": "13",
-            "bg": "./temas/tema4/fondo_opera_fin.jpg",
             "content": ""
         }
     ]

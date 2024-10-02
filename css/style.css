@@ -175,14 +175,13 @@ button{
 
 #wr_btns_slides {
     display: flex;
-    justify-content: flex-start;
     background: #99c7ec;
     border: 1px solid #87b8df;
     gap: 5px;
     flex-wrap: nowrap;
-    align-items: center;
     overflow-y: auto;
     flex-direction: row;
+    justify-content: left;
 }
 
 #wr_lista_slides {
@@ -326,16 +325,8 @@ button{
     width: 80px;
     height: 40px;
 }
-#btn_inicio {
-    margin-right: 1.5rem;
-}
-#btn_fin {
-    margin-left: 1.5rem;
-}
-.btn_ini_fin_sm {
-    width: 60px;
-    height: 40px;
-}
+
+
 .btn_round {
     border-radius: 50%;
     min-width: 40px;
@@ -343,8 +334,7 @@ button{
 }
 
 .btn,
-.sld,
-#wr_vista_next
+.sld
 {
     cursor: pointer;
 }

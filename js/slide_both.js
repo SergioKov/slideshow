@@ -6,7 +6,6 @@ async function crear_obj_temaData(url) {
     obj_temaData = await make_obj_temaData(url);
     //console.log(obj_lang);
 
-    minVal = obj_temaData.slides[0].slide_number;
     maxVal = obj_temaData.slides.length;
 
     slideShowElement.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
@@ -37,6 +36,7 @@ async function pintSlideActive(slide_number = null){
     console.log('=== function pintSlideActive() ==='); 
     
     if(slide_number == null) return;
+    
     if(!isNaN(slide_number)) {
         slide_number = slide_number.toString();
     }

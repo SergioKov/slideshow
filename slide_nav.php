@@ -81,7 +81,7 @@ $conn->close();
                 <div id="nextslide">
                     <div class="nextslide_inner">
 
-                        <div class="bl_head">Next Slide</div>
+                        <div class="bl_head">Slide View</div>
                         <div class="next_body">
                             <div class="vista_inner">
                                 <div id="wr_vista_next" class="bg_show">

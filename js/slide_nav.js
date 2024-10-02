@@ -3,8 +3,8 @@
 const wr_vista_actual = document.getElementById('wr_vista_actual');
 const slideShowElement = wr_vista_actual;// solo un div para la vista
 
-let slide_number = 0;
-let minVal = 0;
+let slide_number = 1;
+let minVal = 1;
 let maxVal = 13;
 let is_started = false;
 let is_finished = false;
@@ -45,7 +45,7 @@ let url = `./json/tema${id_tema}.json`;
 
 aaa();
 async function aaa(){
-    await insertarDatos('slides', 'slide_actual', 0, id_tema);
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
     checkTema(id_tema);
     changeTema(id_tema);
     iniciarSlides();
@@ -158,6 +158,8 @@ function toggleSections(){
         eid_section2.style.display = 'none';  // Ocultar la segunda sección
         eid_btn_section.textContent = 'Show Section 2';//next action
     }
+    pintBtnActive(slide_number);
+    pintSldActive(slide_number);
     mySizeWindow();
 }
 
@@ -218,13 +220,13 @@ async function insertarDatos(tabla, campo, arr, id_tema = null) {
                     console.log('despues await make_obj_temaData(url)');
 
                     if(Object.keys(obj_temaData).length > 0){
-                        pintSlideNext(Number(arr) + 1);
+                        pintSlideNext(arr);
                         pintSlideActive(arr);
                     }
                 }
             }else{
                 if(Object.keys(obj_temaData).length > 0){
-                    pintSlideNext(Number(arr) + 1);
+                    pintSlideNext(arr);
                     pintSlideActive(arr);
                 }
             }            
@@ -270,11 +272,11 @@ async function getSlideActual(tabla, campo){
             slide_number = data.valorCampo; 
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
-            pintSlideNext((Number(slide_number) + 1).toString());
+            //pintSlideNext(slide_number);
 
             setTimeout(()=>{
                 if(Object.keys(obj_temaData).length > 0){
-                    pintSlideNext(Number(data.valorCampo) + 1);
+                    pintSlideNext(data.valorCampo);
                     pintSlideActive(data.valorCampo);
                 }
             },2000);
@@ -292,7 +294,7 @@ async function iniciarSlides(){
     slide_number = minVal;
     pintBtnActive(slide_number); 
     pintSldActive(slide_number); 
-    pintSlideNext((Number(slide_number) + 1).toString()); 
+    pintSlideNext(slide_number); 
     pintSlideActive(slide_number); 
     await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
 }
@@ -301,7 +303,7 @@ async function finalizarSlides(){
     slide_number = maxVal;
     pintBtnActive(slide_number); 
     pintSldActive(slide_number);
-    pintSlideNext((Number(slide_number) + 1).toString()); 
+    pintSlideNext(slide_number); 
     pintSlideActive(slide_number);
     await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
 }
@@ -321,24 +323,15 @@ function makeSlides(){
 
         //botón de slide
         const btn = document.createElement('button');
-        if(index == minVal){
-            btn.id = 'btn_inicio';
-            btn.className = 'btn btn_ini_fin_sm';
-            btn.textContent = 'Inicio';
-        }else if(index == maxVal){
-            btn.id = 'btn_fin';
-            btn.className = 'btn btn_ini_fin_sm';
-            btn.textContent = 'Fin';
-        }else{
-            btn.className = 'btn btn_round';
-            btn.textContent = index;
-        }
+        btn.className = 'btn btn_round';
+        btn.textContent = index;
         btn.dataset.slide_number = index;
         btn.onclick = (event)=>{
             slide_number = index;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
-            pintSlideNext((Number(slide_number) + 1).toString());    
+            pintSlideNext(slide_number);    
+            pintSlideActive(slide_number);    
             insertarDatos('slides', 'slide_actual', index, id_tema);
         };
         wr_btns_slides.append(btn);
@@ -354,7 +347,8 @@ function makeSlides(){
             slide_number = index;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
-            pintSlideNext((Number(slide_number) + 1).toString());    
+            pintSlideNext(slide_number);
+            pintSlideActive(slide_number);    
             insertarDatos('slides', 'slide_actual', index, id_tema);
         };
         ecl_lista_inner.append(sld);
@@ -382,7 +376,7 @@ function resetSlideActual(){
 
 function pintBtnActive(slide_number){
     resetBtnActive();
-    let btn_active = document.querySelector('button[data-slide_number="' + slide_number + '"]');
+    const btn_active = document.querySelector('button[data-slide_number="' + slide_number + '"]');
     if(btn_active !== null){
         btn_active.classList.add('btn_active');
         setTimeout(()=>{
@@ -391,13 +385,16 @@ function pintBtnActive(slide_number){
                 block: "center",     // Alinear el elemento en el centro verticalmente
                 inline: "center"     // Alinear el elemento en el centro horizontalmente
             });
-        },500);
+        },1000);
     }
 }
 
 function pintSldActive(slide_number){
     resetSldActive();
-    let sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
+    const sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
+    let desplazar_y = sld_active.getBoundingClientRect().top;
+    console.log('desplazar_y: ',desplazar_y);
+
     if(sld_active !== null){
         sld_active.classList.add('sld_active');
         setTimeout(()=>{
@@ -406,15 +403,15 @@ function pintSldActive(slide_number){
                 block: "center",     // Alinear el elemento en el centro verticalmente
                 inline: "center"     // Alinear el elemento en el centro horizontalmente
             });
-        },10);
+        },100);
     }
 }
+
 
 function pintSlideNext(slide_number = null){
     console.log('=== function pintSlideNext() ===');
 
     if(!slide_number) return;
-    slide_number -= 1;
 
     if(!isNaN(slide_number)) {
         slide_number = slide_number.toString();
@@ -442,6 +439,7 @@ function pintSlideNext(slide_number = null){
         //no existe este slide_number. Muestro bg negro
         wr_vista_next.style.background = 'black';
         wr_vista_next.innerHTML = '';
+        console.log('no existe este slide_number. Muestro bg negro');
     }
 }
 
@@ -465,8 +463,8 @@ function goToSlide(dir = null){
 
     pintBtnActive(slide_number);
     pintSldActive(slide_number);
-    pintSlideNext((Number(slide_number) + 1).toString());
-    pintSlideActive((slide_number).toString());
+    pintSlideNext(slide_number);
+    pintSlideActive(slide_number);
 
     insertarDatos('slides', 'slide_actual', slide_number, id_tema);    
     
@@ -494,26 +492,38 @@ async function changeTema(id_tema_param) {
 
     if(arr_temas.includes(Number(id_tema))){
 
-        let url = `./json/tema${id_tema}.json`;
-        obj_temaData = await fetchDataToJson(url);
+        aaa();
+        async function aaa(){
 
-        let url_href = new URL(window.location.href);
-        url_href.searchParams.set('id_tema',id_tema);
-        let params_new = '?';
-        url_href.searchParams.forEach((value,key)=>{ 
-            //console.log(`${key}: ${value}`);
-            params_new += `&${key}=${value}`;
-        });
-        //window.location.origin => 'https://bibleqt.es'
-        //window.location.pathname => '/'
-        let new_url_ref = window.location.origin + window.location.pathname + params_new;
-        //console.log("[changeLang()] - URL nueva completa con ref. new_url_ref: ", new_url_ref);
+            let url = `./json/tema${id_tema}.json`;
+            obj_temaData = await fetchDataToJson(url);
+    
+            let url_href = new URL(window.location.href);
+            url_href.searchParams.set('id_tema',id_tema);
+            let params_new = '?';
+            url_href.searchParams.forEach((value,key)=>{ 
+                //console.log(`${key}: ${value}`);
+                params_new += `&${key}=${value}`;
+            });
+            //window.location.origin => 'https://bibleqt.es'
+            //window.location.pathname => '/'
+            let new_url_ref = window.location.origin + window.location.pathname + params_new;
+            //console.log("[changeLang()] - URL nueva completa con ref. new_url_ref: ", new_url_ref);
+    
+            window.history.pushState(null, "Título de la página", new_url_ref);
 
-        window.history.pushState(null, "Título de la página", new_url_ref);
-        
-        checkTema(id_tema);
-        makeSlides();
-        iniciarSlides();
+            maxVal = obj_temaData.slides.length;
+            console.log('maxVal: ',maxVal);
+            
+            checkTema(id_tema);
+            makeSlides();
+            iniciarSlides();
+            setTimeout(()=>{
+                mySizeWindow();
+            },100);
+
+        }
+
         
     }else{
         console.error(`No existe este id_tema '${id_tema}'`);

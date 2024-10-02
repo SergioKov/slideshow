@@ -4,13 +4,8 @@
     "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
-            "slide_number": "0",
-            "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": ""
-        },
-        {
             "slide_number": "1",
-            "bg": "./temas/tema2/preview_slide_1.jpg",
+            "bg": "./temas/tema2/fondo_opera.jpg",
             "content": ""
         },
         {
