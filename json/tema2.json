@@ -71,7 +71,7 @@
         {
             "slide_number": "13",
             "bg": "./temas/tema2/fondo_opera_fin.jpg",
-            "content": "<h1>Titulo Fin</h1><p>algun texto FIN</p>"
+            "content": ""
         }
     ]
 }

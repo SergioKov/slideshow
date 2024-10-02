@@ -175,12 +175,14 @@ button{
 
 #wr_btns_slides {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     background: #99c7ec;
     border: 1px solid #87b8df;
     gap: 5px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
+    overflow-y: auto;
+    flex-direction: row;
 }
 
 #wr_lista_slides {

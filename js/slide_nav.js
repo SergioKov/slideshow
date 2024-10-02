@@ -385,6 +385,13 @@ function pintBtnActive(slide_number){
     let btn_active = document.querySelector('button[data-slide_number="' + slide_number + '"]');
     if(btn_active !== null){
         btn_active.classList.add('btn_active');
+        setTimeout(()=>{
+            btn_active.scrollIntoView({
+                behavior: "smooth",  // Animación suave al desplazar
+                block: "center",     // Alinear el elemento en el centro verticalmente
+                inline: "center"     // Alinear el elemento en el centro horizontalmente
+            });
+        },500);
     }
 }
 
@@ -393,11 +400,13 @@ function pintSldActive(slide_number){
     let sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
     if(sld_active !== null){
         sld_active.classList.add('sld_active');
-        sld_active.scrollIntoView({
-            behavior: "smooth",  // Animación suave al desplazar
-            block: "center",     // Alinear el elemento en el centro verticalmente
-            inline: "center"     // Alinear el elemento en el centro horizontalmente
-        });
+        setTimeout(()=>{
+            sld_active.scrollIntoView({
+                behavior: "smooth",  // Animación suave al desplazar
+                block: "center",     // Alinear el elemento en el centro verticalmente
+                inline: "center"     // Alinear el elemento en el centro horizontalmente
+            });
+        },10);
     }
 }
 

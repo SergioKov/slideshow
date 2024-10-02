@@ -49,6 +49,7 @@ $conn->close();
                     <option value="5">tema5</option>
                     <option value="6">tema6</option>
                     <option value="7">tema7</option>
+                    <option value="8">tema8</option>
                 </select>
 
                 <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
