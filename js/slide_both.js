@@ -1,7 +1,7 @@
 crear_obj_temaData(url);//url => 'la/ruta/al/file.json'
 
 async function crear_obj_temaData(url) {
-    console.log('=== async function crear_temaData() === ');
+    //console.log('=== async function crear_temaData() === ');
 
     obj_temaData = await make_obj_temaData(url);
     //console.log(obj_lang);
@@ -17,12 +17,12 @@ async function crear_obj_temaData(url) {
 }
 
 async function make_obj_temaData(url){
-    console.log('=== function make_obj_temaData() ===');
+    //console.log('=== function make_obj_temaData() ===');
     
     try {
         
         let obj_temaData_f = await fetchDataToJson(url);
-        console.log('obj_temaData_f:');
+        //console.log('obj_temaData_f:');
 
         return obj_temaData_f;
 
@@ -33,32 +33,31 @@ async function make_obj_temaData(url){
 }
 
 async function pintSlideActive(slide_number = null){
-    console.log('=== function pintSlideActive() ==='); 
+    //console.log('=== function pintSlideActive() ==='); 
     
     if(slide_number == null) return;
-    
+
     if(!isNaN(slide_number)) {
         slide_number = slide_number.toString();
     }
 
     if(Object.keys(obj_temaData).length > 0){
         let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
+        let slideDataFon = obj_temaData.slides.find(v => v.slide_number === '1');//fon
 
         if(typeof slideData !== 'undefined'){
-            console.log(slideData);
-
+            //console.log(slideData);
             slideShowElement.style.backgroundImage = `url(${slideData.bg})`;
-            //${obj_temaData.titulo}
-
-            slideShowElement.innerHTML = `                
-                ${slideData.content}
-            `;
-
-            if(slideData.style){
-                const st = document.createElement('style');
-                st.innerHTML = slideData.style;
-                document.head.append(st);
+            
+            if(is_fon_shown){
+                slideShowElement.style.backgroundImage = `url(${slideDataFon.bg})`;
+                
+                //solo para slide_nav.php
+                if(slideViewElement){
+                    slideViewElement.style.backgroundImage = `url(${slideDataFon.bg})`;
+                }                
             }
+            
         }else{
             console.log('contenido no está definido');
         }        

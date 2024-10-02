@@ -97,7 +97,7 @@ $campo = $conn->real_escape_string($datos['campo']);//arrTabs
 
 //busco si hay registro
 // Preparar y ejecutar la consulta
-$sql_init = "SELECT slide_actual, id_tema  
+$sql_init = "SELECT slide_actual, id_tema, is_fon_shown  
             FROM slides 
             WHERE id_user = '$id_user_logged'
 ";
@@ -118,10 +118,12 @@ if($result->num_rows > 0){
     $hay_id_user_en_tabla = true;
     $valorCampo = $row[$campo];
     $valorIdTema = $row['id_tema'];
+    $valorIsFonShown = $row['is_fon_shown'];
     $data = [
         'success' => true,
         'valorCampo' => $valorCampo,
-        'valorIdTema' => $valorIdTema
+        'valorIdTema' => $valorIdTema,
+        'valorIsFonShown' => $valorIsFonShown
     ];
 
 }else{

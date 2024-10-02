@@ -117,6 +117,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
     //debug_x($datos['arr']); 
     
     $id_tema = $conn->real_escape_string($datos['id_tema']);//get parameter
+    $is_fon_shown = $conn->real_escape_string($datos['is_fon_shown']);//get parameter
     $tabla = $conn->real_escape_string($datos['tabla']);//vkladki
     $campo = $conn->real_escape_string($datos['campo']);//arrTabs
     $arr = json_encode($datos['arr'], JSON_UNESCAPED_UNICODE);//arrTabs //no usar $conn->real_escape_string($datos['arr']) ya que retorna NULL
@@ -166,6 +167,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
         $sql2_up_init = "UPDATE slides SET 
                     slide_actual = '$arr',
                     id_tema = '$id_tema',
+                    is_fon_shown = '$is_fon_shown',
                     updated_at = '$fechaHoraActual'
                     WHERE id_user = '$id_user_logged'
         ";
@@ -204,14 +206,12 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
         if($hay_id_user_en_tabla){
             $respuesta = [
                 'success' => true,
-                'mensaje' => 'Datos actualizados correctamente.',
-                'dic_code' => 'd246'
+                'mensaje' => 'Datos actualizados correctamente.'
             ];
         }else{
             $respuesta = [
                 'success' => true,
-                'mensaje' => 'Datos insertados correctamente.',
-                'dic_code' => 'd247'
+                'mensaje' => 'Datos insertados correctamente.'
             ];
         }
     } else {
@@ -221,8 +221,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
             $respuesta = [
                 'success' => false,
                 'error' => 'Error al actualizar datos: ',
-                'conn_error' => $conn->error,
-                'dic_code' => 'd248'
+                'conn_error' => $conn->error
             ];
         }else{
             //writeLog("Error al insertar datos. Error: [" . $conn->error . "]");
@@ -230,8 +229,7 @@ if (in_array($_SERVER['REQUEST_METHOD'], $arr_metodos)){
             $respuesta = [
                 'success' => false,
                 'mensaje' => 'Error al insertar datos: ',
-                'conn_error' => $conn->error,
-                'dic_code' => 'd249'
+                'conn_error' => $conn->error
             ];
         }
     }

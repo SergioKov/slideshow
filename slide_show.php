@@ -23,6 +23,10 @@ $conn->close();
     </div>
 </div>
 
+<button id="btn_fullscreen_show" class="btn_hidden" onclick="toggleFullscreen_show()">
+    <img src="./images/fullscreen.png"/>
+</button>
+
 <script src="./js/config_both.js"></script>
 <script src="./js/slide_show.js"></script>
 <script src="./js/slide_both.js"></script>

@@ -1,36 +1,36 @@
 
 
+const wr_vista_next = document.getElementById('wr_vista_next');
+const slideViewElement = wr_vista_next;// solo un div para la vista
+
 const wr_vista_actual = document.getElementById('wr_vista_actual');
 const slideShowElement = wr_vista_actual;// solo un div para la vista
-
-let slide_number = 1;
-let minVal = 1;
-let maxVal = 13;
-let is_started = false;
-let is_finished = false;
 
 const eid_header = document.getElementById('header'); 
 const eid_sel_tema = document.getElementById('sel_tema');
 
 const eid_btn_section = document.getElementById('btn_section'); 
 const eid_sidebar = document.getElementById('sidebar'); 
-const eid_nextslide = document.getElementById('nextslide'); 
-
+const eid_nextslide = document.getElementById('nextslide');
 const eid_main = document.getElementById('main'); 
-const eid_main_inner = document.getElementById('main_inner'); 
-
-const eid_section1 = document.getElementById('section1'); 
-
-const eid_wr_vista_next = document.getElementById('wr_vista_next'); 
-
-const eid_section2 = document.getElementById('section2'); 
-
+const eid_main_inner = document.getElementById('main_inner');
+const eid_section1 = document.getElementById('section1');
+const eid_wr_vista_next = document.getElementById('wr_vista_next');
+const eid_section2 = document.getElementById('section2');
 const eid_footer = document.getElementById('footer');
 
 const eid_btn_iniciar = document.getElementById('btn_iniciar');
 const eid_btn_finalizar = document.getElementById('btn_finalizar');
+const eid_btn_fon = document.getElementById('btn_fon');
 
-let obj_temaData = {};
+let slide_number = 1;
+let is_fon_shown = 0;//por defecto
+
+let minVal = 1;
+let maxVal = 13;
+let is_started = false;
+let is_finished = false;
+
 
 let id_tema_get = new URL(window.location.href).searchParams.get('id_tema');
 //localStorage.setItem('id_tema',id_tema);
@@ -43,9 +43,11 @@ if(id_tema_get){
 
 let url = `./json/tema${id_tema}.json`;
 
+let obj_temaData = {};
+
 aaa();
 async function aaa(){
-    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
     checkTema(id_tema);
     changeTema(id_tema);
     iniciarSlides();
@@ -109,28 +111,27 @@ function mySizeWindow(){
     let vista_slide_next_h = wr_vista_next_w * 0.5625;//alto de NextSlide
     wr_vista_next.style.height = vista_slide_next_h + 'px';
 
-    console.log(' section2_h: ', section2_h);
-    console.log(' section2_w: ', section2_w);
+    //console.log(' section2_h: ', section2_h);
+    //console.log(' section2_w: ', section2_w);
     
     let actual_body_h = 
       section2_h 
     - actual_head_h
     ;
     let vista_actual_max_h = actual_body_h;
-    console.log(' vista_actual_max_h: ', vista_actual_max_h);
+    //console.log(' vista_actual_max_h: ', vista_actual_max_h);
 
     let vista_slide_actual_w = actual_body_h / 0.5625;//ancho de Actual Slide
     let vista_slide_actual_h = vista_actual_max_h;
     wr_vista_actual.style.width = vista_slide_actual_w + 'px';
     wr_vista_actual.style.height = vista_slide_actual_h + 'px';
 
-    console.log(' fin ---: ');
+    //console.log(' fin ---: ');
 } 
 
 window.addEventListener('load',()=>{
     //console.log('resize - window.innerWidth: '+window.innerWidth);
     mySizeWindow();    
-    //insertarDatos('slides', 'slide_actual', slide_number);    
 });
 window.addEventListener('resize',()=>{
     //console.log('resize - window.innerWidth: '+window.innerWidth);
@@ -169,11 +170,14 @@ async function fetchDataToJson(url) {
     return data;
 }
 
-async function insertarDatos(tabla, campo, arr, id_tema = null) {
-    console.log('=== function insertarDatos(tabla, campo, arr) ===');
+async function insertarDatos(tabla, campo, arr, id_tema = null, is_fon_shown = null) {
+    //console.log('=== function insertarDatos(tabla, campo, arr) ===');
 
     if(id_tema == null) id_tema = 1;
-    console.log('id_tema: ', id_tema);
+    //console.log('id_tema: ', id_tema);
+
+    if(is_fon_shown == null) is_fon_shown = 0;
+    //console.log('is_fon_shown: ', is_fon_shown);
 
     try {
 
@@ -184,6 +188,7 @@ async function insertarDatos(tabla, campo, arr, id_tema = null) {
 
         const datos = {
             id_tema: id_tema,
+            is_fon_shown: is_fon_shown,
             tabla: tabla,
             campo: campo,
             arr: arr
@@ -208,16 +213,16 @@ async function insertarDatos(tabla, campo, arr, id_tema = null) {
 
         if(data.success){
             let text_show = data.mensaje;
-            console.log(text_show + ` tabla: ${tabla}`);
+            //console.log(text_show + ` tabla: ${tabla}`);
 
             if(obj_temaData.id_tema !== id_tema){
                 aaa();
                 async function aaa(){
                     let url = `./json/tema${id_tema}.json`;
                     
-                    console.log('antes await make_obj_temaData(url)');
-                    obj_temaData = await make_obj_temaData(url);                    
-                    console.log('despues await make_obj_temaData(url)');
+                    //console.log('antes await make_obj_temaData(url)');
+                    obj_temaData = await make_obj_temaData(url);
+                    //console.log('despues await make_obj_temaData(url)');
 
                     if(Object.keys(obj_temaData).length > 0){
                         pintSlideNext(arr);
@@ -242,7 +247,7 @@ async function insertarDatos(tabla, campo, arr, id_tema = null) {
 }
 
 async function getSlideActual(tabla, campo){
-    console.log('=== function getSlideActual(tabla, campo) ===');
+    //console.log('=== function getSlideActual(tabla, campo) ===');
 
     try {
                
@@ -264,15 +269,16 @@ async function getSlideActual(tabla, campo){
         const data = await response.json();
         // const data = await response.text();//test
         //console.log(`Datos de la tabla ${tabla} y campo ${campo}: `);
-        console.log(data);  
+        //console.log(data);  
         
         if(data.success){
-            console.log('success is true');
+            //console.log('success is true');
 
             slide_number = data.valorCampo; 
+            is_fon_shown = Number(data.valorIsFonShown);
+
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
-            //pintSlideNext(slide_number);
 
             setTimeout(()=>{
                 if(Object.keys(obj_temaData).length > 0){
@@ -282,7 +288,7 @@ async function getSlideActual(tabla, campo){
             },2000);
 
         }else{
-            console.log('success is false');
+            //console.log('success is false');
         }
 
     } catch (error) {
@@ -296,7 +302,10 @@ async function iniciarSlides(){
     pintSldActive(slide_number); 
     pintSlideNext(slide_number); 
     pintSlideActive(slide_number); 
-    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
+    
+    is_fon_shown = 0;//ya que estoy pasando al inicio slide quito fon
+    checkBtnFon();
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
 }
 
 async function finalizarSlides(){
@@ -305,7 +314,11 @@ async function finalizarSlides(){
     pintSldActive(slide_number);
     pintSlideNext(slide_number); 
     pintSlideActive(slide_number);
-    await insertarDatos('slides', 'slide_actual', slide_number, id_tema);
+
+    is_fon_shown = 0;//ya que estoy pasando al final slide quito fon
+    checkBtnFon();
+
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
 }
 
 function makeSlides(){
@@ -331,8 +344,12 @@ function makeSlides(){
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
             pintSlideNext(slide_number);    
-            pintSlideActive(slide_number);    
-            insertarDatos('slides', 'slide_actual', index, id_tema);
+            pintSlideActive(slide_number);
+
+            is_fon_shown = 0;//ya que estoy pasando al next/prev slide quito fon
+            checkBtnFon();
+           
+            insertarDatos('slides', 'slide_actual', index, id_tema, is_fon_shown);
         };
         wr_btns_slides.append(btn);
         
@@ -342,14 +359,18 @@ function makeSlides(){
         sld.dataset.slide_number = index;
         sld.style.backgroundImage = `url(${slideData.bg})`;
         sld.style.backgroundSize = 'contain';    
-        sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
+        //sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
         sld.onclick = (event)=>{
             slide_number = index;
             pintBtnActive(slide_number);
             pintSldActive(slide_number);
             pintSlideNext(slide_number);
-            pintSlideActive(slide_number);    
-            insertarDatos('slides', 'slide_actual', index, id_tema);
+            pintSlideActive(slide_number); 
+
+            is_fon_shown = 0;//ya que estoy pasando al next/prev slide quito fon
+            checkBtnFon();
+
+            insertarDatos('slides', 'slide_actual', index, id_tema, is_fon_shown);
         };
         ecl_lista_inner.append(sld);
     }
@@ -393,7 +414,7 @@ function pintSldActive(slide_number){
     resetSldActive();
     const sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
     let desplazar_y = sld_active.getBoundingClientRect().top;
-    console.log('desplazar_y: ',desplazar_y);
+    //console.log('desplazar_y: ',desplazar_y);
 
     if(sld_active !== null){
         sld_active.classList.add('sld_active');
@@ -407,9 +428,8 @@ function pintSldActive(slide_number){
     }
 }
 
-
 function pintSlideNext(slide_number = null){
-    console.log('=== function pintSlideNext() ===');
+    //console.log('=== function pintSlideNext() ===');
 
     if(!slide_number) return;
 
@@ -423,39 +443,34 @@ function pintSlideNext(slide_number = null){
             let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
     
             if(typeof slideData !== 'undefined'){
-                console.log(slideData);
-    
+                //console.log(slideData);    
                 wr_vista_next.style.backgroundImage = `url(${slideData.bg})`;
-                //${obj_temaData.titulo}
     
-                wr_vista_next.innerHTML = `                
-                    ${slideData.content}
-                `;
             }else{
-                console.log('contenido no está definido');
+                //console.log('contenido no está definido');
             }        
         }
     }else{
         //no existe este slide_number. Muestro bg negro
         wr_vista_next.style.background = 'black';
         wr_vista_next.innerHTML = '';
-        console.log('no existe este slide_number. Muestro bg negro');
+        //console.log('no existe este slide_number. Muestro bg negro');
     }
 }
 
-function goToSlide(dir = null){
-    console.log(' === function goToSlide()===');
+async function goToSlide(dir = null){
+    //console.log(' === function goToSlide()===');
     
     if(dir == null) return;    
 
     if(dir == 'prev'){       
         slide_number--;
-        console.log('prev. slide_number', slide_number);        
+        //console.log('prev. slide_number', slide_number);        
     }
     
     if(dir == 'next'){
         slide_number++;
-        console.log('next. slide_number', slide_number);
+        //console.log('next. slide_number', slide_number);
     }
 
     slide_number = (slide_number < minVal) ? minVal : slide_number ;
@@ -466,9 +481,11 @@ function goToSlide(dir = null){
     pintSlideNext(slide_number);
     pintSlideActive(slide_number);
 
-    insertarDatos('slides', 'slide_actual', slide_number, id_tema);    
+    is_fon_shown = 0;//ya que estoy pasando al next/prev slide quito fon
+    checkBtnFon();
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
     
-    console.log(' end === function goToSlide()===');
+    //console.log(' end === function goToSlide()===');
 }
 
 
@@ -484,11 +501,11 @@ function checkTema(id_tema){
 
 
 async function changeTema(id_tema_param) {
-    console.log('=== function changeTema(id_tema) ==='); 
-    console.log('id_tema_param: ',id_tema_param);
+    //console.log('=== function changeTema(id_tema) ==='); 
+    //console.log('id_tema_param: ',id_tema_param);
 
     id_tema = id_tema_param;
-    console.log('id_tema: ',id_tema);
+    //console.log('id_tema: ',id_tema);
 
     if(arr_temas.includes(Number(id_tema))){
 
@@ -513,7 +530,7 @@ async function changeTema(id_tema_param) {
             window.history.pushState(null, "Título de la página", new_url_ref);
 
             maxVal = obj_temaData.slides.length;
-            console.log('maxVal: ',maxVal);
+            //console.log('maxVal: ',maxVal);
             
             checkTema(id_tema);
             makeSlides();
@@ -536,3 +553,87 @@ async function changeTema(id_tema_param) {
     //}
 }
 
+function openFullscreen() {
+    const element = document.body;
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.webkitRequestFullscreen) { // Safari
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+    }
+}
+
+function toggleFullscreen() {
+    const element = document.body;
+    const eid_btn_fullscreen = document.getElementById('btn_fullscreen');
+
+    if (!document.fullscreenElement) {
+        // Entrar en pantalla completa
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.webkitRequestFullscreen) { // Safari
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+        }
+        eid_btn_fullscreen.querySelector('img').src = './images/fullscreen_adentro.png';
+
+    } else {
+        // Salir del modo pantalla completa
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { // Safari
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { // IE/Edge
+            document.msExitFullscreen();
+        }
+        eid_btn_fullscreen.querySelector('img').src = './images/fullscreen.png';
+
+    }
+}
+
+// Detectar la tecla de flecha izquierda
+document.addEventListener('keydown', (event)=> {
+    if (event.key === "ArrowLeft") {  // Verifica si la tecla presionada es 'ArrowLeft'
+        goToSlide('prev');
+    }
+    if (event.key === "ArrowRight") {  // Verifica si la tecla presionada es 'ArrowRight'
+        goToSlide('next');
+    }
+
+    if (event.key === "ArrowUp") {  // Verifica si la tecla presionada es 'ArrowUp'
+        iniciarSlides();
+    }
+    if (event.key === "ArrowDown") {  // Verifica si la tecla presionada es 'ArrowDown'
+        finalizarSlides();
+    }
+});
+
+async function toggleFon(){
+    //console.log('=== function toggleFon() ===');
+    //console.log('antes is_fon_shown: ',is_fon_shown);    
+    
+    if(is_fon_shown == 0){
+        is_fon_shown = 1;
+    }else{
+        is_fon_shown = 0;
+    }
+    checkBtnFon();
+    //console.log('new is_fon_shown: ',is_fon_shown);
+
+    await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
+
+}
+
+function checkBtnFon(){
+    if(is_fon_shown == 0){
+        eid_btn_fon.textContent = 'Show Fon';//futura acción
+        eid_btn_fon.classList.add('fon_purple');
+        eid_btn_fon.classList.remove('fon_red');
+    }else{
+        eid_btn_fon.textContent = 'Show Slide';//futura acción
+        eid_btn_fon.classList.add('fon_red');
+        eid_btn_fon.classList.remove('fon_purple');
+    }
+}

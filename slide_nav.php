@@ -53,6 +53,14 @@ $conn->close();
                 </select>
 
                 <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
+                
+                <button id="btn_fullscreen" class="btn" onclick="toggleFullscreen()">
+                    <img src="./images/fullscreen.png"/>
+                </button>
+
+                <button id="btn_view" class="btn" onclick="window.open('slide_show.php', '_new')">View</button>
+                <button id="btn_fon" class="btn btn_ini_fin" onclick="toggleFon()">Show Fon</button>
+                
                 <button id="btn_finalizar" class="btn btn_ini_fin" data-info="finalizarSlides()">Finalizar</button> 
             </div>
 
