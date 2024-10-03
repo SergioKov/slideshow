@@ -57,7 +57,7 @@ async function obtenerDatosDeBD(tabla, campo){
         const data = await response.json();
         //const data = await response.text();//test
         //console.log(`Datos de la tabla ${tabla} y campo ${campo}: `);
-        console.log('data de bd: ',data); 
+        //console.log('data de bd: ',data); 
                 
         if(data.success){
             //console.log('success is true');

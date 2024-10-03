@@ -1,62 +1,50 @@
 {
     "id_tema": "4",
     "titulo": "Tema4",
-    "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema4/fondo1.jpg",
-            "content": ""
+            "bg": "fondo1.jpg"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema4/Diapositiva2.jpg",
-            "content": ""
+            "bg": "Diapositiva2.jpg"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema4/Diapositiva3.jpg",
-            "content": ""
+            "bg": "Diapositiva3.jpg"
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema4/Diapositiva4.jpg",
-            "content": ""
+            "bg": "Diapositiva4.jpg"
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema4/Diapositiva5.jpg",
-            "content": ""
+            "bg": "Diapositiva5.jpg"
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema4/Diapositiva6.jpg",
-            "content": ""
+            "bg": "Diapositiva6.jpg"
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema4/Diapositiva7.jpg",
-            "content": ""
+            "bg": "Diapositiva7.jpg"
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema4/Diapositiva8.jpg",
-            "content": ""
+            "bg": "Diapositiva8.jpg"
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema4/Diapositiva9.jpg",
-            "content": ""
+            "bg": "Diapositiva9.jpg"
         },
         {
             "slide_number": "10",
-            "bg": "./temas/tema4/Diapositiva10.jpg",
-            "content": ""
+            "bg": "Diapositiva10.jpg"
         },
         {
             "slide_number": "11",
-            "bg": "./temas/tema4/Diapositiva11.jpg",
-            "content": ""
+            "bg": "Diapositiva11.jpg"
         }
     ]
 }

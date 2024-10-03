@@ -1,52 +1,42 @@
 {
     "id_tema": "7",
     "titulo": "tema7",
-    "tema_bg": "./images/fondo_opera.png",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema7/Diapositiva13.png",
-            "content": ""
+            "bg": "Diapositiva13.png"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema7/Diapositiva2.png",
-            "content": ""
+            "bg": "Diapositiva2.png"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema7/Diapositiva3.png",
-            "content": ""
+            "bg": "Diapositiva3.png"
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema7/Diapositiva4.png",
-            "content": ""
+            "bg": "Diapositiva4.png"
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema7/Diapositiva5.png",
-            "content": ""
+            "bg": "Diapositiva5.png"
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema7/Diapositiva6.png",
-            "content": ""
+            "bg": "Diapositiva6.png"
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema7/Diapositiva7.png",
-            "content": ""
+            "bg": "Diapositiva7.png"
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema7/Diapositiva8.png",
-            "content": ""
+            "bg": "Diapositiva8.png"
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema7/Diapositiva9.png",
-            "content": ""
+            "bg": "Diapositiva9.png"
         }
     ]
 }

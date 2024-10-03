@@ -1,72 +1,58 @@
 {
     "id_tema": "2",
-    "titulo": "<h1>Tema2</h1>",
-    "tema_bg": "./images/fondo_opera.jpg",
+    "titulo": "Tema2",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema2/fondo_opera.jpg",
-            "content": ""
+            "bg": "preview_slide_1.jpg"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema2/preview_slide_2.jpg",
-            "content": ""
+            "bg": "preview_slide_2.jpg"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema2/preview_slide_3.jpg",
-            "content": ""
+            "bg": "preview_slide_3.jpg"
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema2/preview_slide_4.jpg",
-            "content": ""
+            "bg": "preview_slide_4.jpg"
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema2/preview_slide_5.jpg",
-            "content": ""
+            "bg": "preview_slide_5.jpg"
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema2/preview_slide_6.jpg",
-            "content": ""
+            "bg": "preview_slide_6.jpg"
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema2/preview_slide_7.jpg",
-            "content": ""
+            "bg": "preview_slide_7.jpg"
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema2/preview_slide_8.jpg",
-            "content": ""
+            "bg": "preview_slide_8.jpg"
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema2/preview_slide_9.jpg",
-            "content": ""
+            "bg": "preview_slide_9.jpg"
         },
         {
             "slide_number": "10",
-            "bg": "./temas/tema2/preview_slide_10.jpg",
-            "content": ""
+            "bg": "preview_slide_10.jpg"
         },
         {
             "slide_number": "11",
-            "bg": "./temas/tema2/preview_slide_11.jpg",
-            "content": ""
+            "bg": "preview_slide_11.jpg"
         },
         {
             "slide_number": "12",
-            "bg": "./temas/tema2/preview_slide_12.jpg",
-            "content": ""
+            "bg": "preview_slide_12.jpg"
         },
         {
             "slide_number": "13",
-            "bg": "./temas/tema2/fondo_opera_fin.jpg",
-            "content": ""
+            "bg": "fondo_opera_fin.jpg"
         }
     ]
 }

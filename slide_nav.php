@@ -49,7 +49,7 @@ $conn->close();
                     <option value="5">tema5</option>
                     <option value="6">tema6</option>
                     <option value="7">tema7</option>
-                    <option value="8">tema8</option>
+                    <option value="8">tema8 sdhsdh sdhs dh sdgh sghs gjsdfgjdfghj dfgj fghj fghkjfghk fghk fghk</option>
                 </select>
 
                 <button id="btn_section" class="btn btn_long" onclick="toggleSections()">Show Section 2</button>
@@ -146,7 +146,7 @@ $conn->close();
 
 </script>
 
-<script src="./js/config_both.js"></script>
+<script src="./js/config.js"></script>
 <script src="./js/slide_nav.js"></script>
 <script src="./js/slide_both.js"></script>
 

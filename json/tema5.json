@@ -1,22 +1,18 @@
 {
     "id_tema": "5",
     "titulo": "tema5",
-    "tema_bg": "./images/fondo_opera.jpg",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema5/Diapositiva13.jpg",
-            "content": ""
+            "bg": "Diapositiva13.jpg"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema5/Diapositiva2.jpg",
-            "content": ""
+            "bg": "Diapositiva2.jpg"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema5/Diapositiva3.jpg",
-            "content": ""
+            "bg": "Diapositiva3.jpg"
         }
     ]
 }

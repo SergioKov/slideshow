@@ -1,457 +1,366 @@
 {
     "id_tema": "8",
     "titulo": "tema8",
-    "tema_bg": "./images/fondo_opera.png",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema8/Diapositiva1.png",
-            "content": ""
+            "bg": "Diapositiva1.png"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema8/Diapositiva2.png",
-            "content": ""
+            "bg": "Diapositiva2.png"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema8/Diapositiva3.png",
-            "content": ""
+            "bg": "Diapositiva3.png"
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema8/Diapositiva4.png",
-            "content": ""
+            "bg": "Diapositiva4.png"
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema8/Diapositiva5.png",
-            "content": ""
+            "bg": "Diapositiva5.png"
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema8/Diapositiva6.png",
-            "content": ""
+            "bg": "Diapositiva6.png"
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema8/Diapositiva7.png",
-            "content": ""
+            "bg": "Diapositiva7.png"
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema8/Diapositiva8.png",
-            "content": ""
+            "bg": "Diapositiva8.png"
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema8/Diapositiva9.png",
-            "content": ""
+            "bg": "Diapositiva9.png"
         },
         {
             "slide_number": "10",
-            "bg": "./temas/tema8/Diapositiva10.png",
-            "content": ""
+            "bg": "Diapositiva10.png"
         },
         {
             "slide_number": "11",
-            "bg": "./temas/tema8/Diapositiva11.png",
-            "content": ""
+            "bg": "Diapositiva11.png"
         },
         {
             "slide_number": "12",
-            "bg": "./temas/tema8/Diapositiva12.png",
-            "content": ""
+            "bg": "Diapositiva12.png"
         },
         {
             "slide_number": "13",
-            "bg": "./temas/tema8/Diapositiva13.png",
-            "content": ""
+            "bg": "Diapositiva13.png"
         },
         {
             "slide_number": "14",
-            "bg": "./temas/tema8/Diapositiva14.png",
-            "content": ""
+            "bg": "Diapositiva14.png"
         },
         {
             "slide_number": "15",
-            "bg": "./temas/tema8/Diapositiva15.png",
-            "content": ""
+            "bg": "Diapositiva15.png"
         },
         {
             "slide_number": "16",
-            "bg": "./temas/tema8/Diapositiva16.png",
-            "content": ""
+            "bg": "Diapositiva16.png"
         },
         {
             "slide_number": "17",
-            "bg": "./temas/tema8/Diapositiva17.png",
-            "content": ""
+            "bg": "Diapositiva17.png"
         },
         {
             "slide_number": "18",
-            "bg": "./temas/tema8/Diapositiva18.png",
-            "content": ""
+            "bg": "Diapositiva18.png"
         },
         {
             "slide_number": "19",
-            "bg": "./temas/tema8/Diapositiva19.png",
-            "content": ""
+            "bg": "Diapositiva19.png"
         },
         {
             "slide_number": "20",
-            "bg": "./temas/tema8/Diapositiva20.png",
-            "content": ""
+            "bg": "Diapositiva20.png"
         },
         {
             "slide_number": "21",
-            "bg": "./temas/tema8/Diapositiva21.png",
-            "content": ""
+            "bg": "Diapositiva21.png"
         },
         {
             "slide_number": "22",
-            "bg": "./temas/tema8/Diapositiva22.png",
-            "content": ""
+            "bg": "Diapositiva22.png"
         },
         {
             "slide_number": "23",
-            "bg": "./temas/tema8/Diapositiva23.png",
-            "content": ""
+            "bg": "Diapositiva23.png"
         },
         {
             "slide_number": "24",
-            "bg": "./temas/tema8/Diapositiva24.png",
-            "content": ""
+            "bg": "Diapositiva24.png"
         },
         {
             "slide_number": "25",
-            "bg": "./temas/tema8/Diapositiva25.png",
-            "content": ""
+            "bg": "Diapositiva25.png"
         },
         {
             "slide_number": "26",
-            "bg": "./temas/tema8/Diapositiva26.png",
-            "content": ""
+            "bg": "Diapositiva26.png"
         },
         {
             "slide_number": "27",
-            "bg": "./temas/tema8/Diapositiva27.png",
-            "content": ""
+            "bg": "Diapositiva27.png"
         },
         {
             "slide_number": "28",
-            "bg": "./temas/tema8/Diapositiva28.png",
-            "content": ""
+            "bg": "Diapositiva28.png"
         },
         {
             "slide_number": "29",
-            "bg": "./temas/tema8/Diapositiva29.png",
-            "content": ""
+            "bg": "Diapositiva29.png"
         },
         {
             "slide_number": "30",
-            "bg": "./temas/tema8/Diapositiva30.png",
-            "content": ""
+            "bg": "Diapositiva30.png"
         },
         {
             "slide_number": "31",
-            "bg": "./temas/tema8/Diapositiva31.png",
-            "content": ""
+            "bg": "Diapositiva31.png"
         },
         {
             "slide_number": "32",
-            "bg": "./temas/tema8/Diapositiva32.png",
-            "content": ""
+            "bg": "Diapositiva32.png"
         },
         {
             "slide_number": "33",
-            "bg": "./temas/tema8/Diapositiva33.png",
-            "content": ""
+            "bg": "Diapositiva33.png"
         },
         {
             "slide_number": "34",
-            "bg": "./temas/tema8/Diapositiva34.png",
-            "content": ""
+            "bg": "Diapositiva34.png"
         },
         {
             "slide_number": "35",
-            "bg": "./temas/tema8/Diapositiva35.png",
-            "content": ""
+            "bg": "Diapositiva35.png"
         },
         {
             "slide_number": "36",
-            "bg": "./temas/tema8/Diapositiva36.png",
-            "content": ""
+            "bg": "Diapositiva36.png"
         },
         {
             "slide_number": "37",
-            "bg": "./temas/tema8/Diapositiva37.png",
-            "content": ""
+            "bg": "Diapositiva37.png"
         },
         {
             "slide_number": "38",
-            "bg": "./temas/tema8/Diapositiva38.png",
-            "content": ""
+            "bg": "Diapositiva38.png"
         },
         {
             "slide_number": "39",
-            "bg": "./temas/tema8/Diapositiva39.png",
-            "content": ""
+            "bg": "Diapositiva39.png"
         },
         {
             "slide_number": "40",
-            "bg": "./temas/tema8/Diapositiva40.png",
-            "content": ""
+            "bg": "Diapositiva40.png"
         },
         {
             "slide_number": "41",
-            "bg": "./temas/tema8/Diapositiva1.png",
-            "content": ""
+            "bg": "Diapositiva1.png"
         },
         {
             "slide_number": "42",
-            "bg": "./temas/tema8/Diapositiva2.png",
-            "content": ""
+            "bg": "Diapositiva2.png"
         },
         {
             "slide_number": "43",
-            "bg": "./temas/tema8/Diapositiva3.png",
-            "content": ""
+            "bg": "Diapositiva3.png"
         },
         {
             "slide_number": "44",
-            "bg": "./temas/tema8/Diapositiva4.png",
-            "content": ""
+            "bg": "Diapositiva4.png"
         },
         {
             "slide_number": "45",
-            "bg": "./temas/tema8/Diapositiva5.png",
-            "content": ""
+            "bg": "Diapositiva5.png"
         },
         {
             "slide_number": "46",
-            "bg": "./temas/tema8/Diapositiva6.png",
-            "content": ""
+            "bg": "Diapositiva6.png"
         },
         {
             "slide_number": "47",
-            "bg": "./temas/tema8/Diapositiva7.png",
-            "content": ""
+            "bg": "Diapositiva7.png"
         },
         {
             "slide_number": "48",
-            "bg": "./temas/tema8/Diapositiva8.png",
-            "content": ""
+            "bg": "Diapositiva8.png"
         },
         {
             "slide_number": "49",
-            "bg": "./temas/tema8/Diapositiva9.png",
-            "content": ""
+            "bg": "Diapositiva9.png"
         },
         {
             "slide_number": "50",
-            "bg": "./temas/tema8/Diapositiva10.png",
-            "content": ""
+            "bg": "Diapositiva10.png"
         },
         {
             "slide_number": "51",
-            "bg": "./temas/tema8/Diapositiva1.png",
-            "content": ""
+            "bg": "Diapositiva1.png"
         },
         {
             "slide_number": "52",
-            "bg": "./temas/tema8/Diapositiva2.png",
-            "content": ""
+            "bg": "Diapositiva2.png"
         },
         {
             "slide_number": "53",
-            "bg": "./temas/tema8/Diapositiva3.png",
-            "content": ""
+            "bg": "Diapositiva3.png"
         },
         {
             "slide_number": "54",
-            "bg": "./temas/tema8/Diapositiva4.png",
-            "content": ""
+            "bg": "Diapositiva4.png"
         },
         {
             "slide_number": "55",
-            "bg": "./temas/tema8/Diapositiva5.png",
-            "content": ""
+            "bg": "Diapositiva5.png"
         },
         {
             "slide_number": "56",
-            "bg": "./temas/tema8/Diapositiva6.png",
-            "content": ""
+            "bg": "Diapositiva6.png"
         },
         {
             "slide_number": "57",
-            "bg": "./temas/tema8/Diapositiva7.png",
-            "content": ""
+            "bg": "Diapositiva7.png"
         },
         {
             "slide_number": "58",
-            "bg": "./temas/tema8/Diapositiva8.png",
-            "content": ""
+            "bg": "Diapositiva8.png"
         },
         {
             "slide_number": "59",
-            "bg": "./temas/tema8/Diapositiva9.png",
-            "content": ""
+            "bg": "Diapositiva9.png"
         },
         {
             "slide_number": "60",
-            "bg": "./temas/tema8/Diapositiva10.png",
-            "content": ""
+            "bg": "Diapositiva10.png"
         },
         {
             "slide_number": "61",
-            "bg": "./temas/tema8/Diapositiva11.png",
-            "content": ""
+            "bg": "Diapositiva11.png"
         },
         {
             "slide_number": "62",
-            "bg": "./temas/tema8/Diapositiva12.png",
-            "content": ""
+            "bg": "Diapositiva12.png"
         },
         {
             "slide_number": "63",
-            "bg": "./temas/tema8/Diapositiva13.png",
-            "content": ""
+            "bg": "Diapositiva13.png"
         },
         {
             "slide_number": "64",
-            "bg": "./temas/tema8/Diapositiva14.png",
-            "content": ""
+            "bg": "Diapositiva14.png"
         },
         {
             "slide_number": "65",
-            "bg": "./temas/tema8/Diapositiva15.png",
-            "content": ""
+            "bg": "Diapositiva15.png"
         },
         {
             "slide_number": "66",
-            "bg": "./temas/tema8/Diapositiva16.png",
-            "content": ""
+            "bg": "Diapositiva16.png"
         },
         {
             "slide_number": "67",
-            "bg": "./temas/tema8/Diapositiva17.png",
-            "content": ""
+            "bg": "Diapositiva17.png"
         },
         {
             "slide_number": "68",
-            "bg": "./temas/tema8/Diapositiva18.png",
-            "content": ""
+            "bg": "Diapositiva18.png"
         },
         {
             "slide_number": "69",
-            "bg": "./temas/tema8/Diapositiva19.png",
-            "content": ""
+            "bg": "Diapositiva19.png"
         },
         {
             "slide_number": "70",
-            "bg": "./temas/tema8/Diapositiva20.png",
-            "content": ""
+            "bg": "Diapositiva20.png"
         },
         {
             "slide_number": "71",
-            "bg": "./temas/tema8/Diapositiva21.png",
-            "content": ""
+            "bg": "Diapositiva21.png"
         },
         {
             "slide_number": "72",
-            "bg": "./temas/tema8/Diapositiva22.png",
-            "content": ""
+            "bg": "Diapositiva22.png"
         },
         {
             "slide_number": "73",
-            "bg": "./temas/tema8/Diapositiva23.png",
-            "content": ""
+            "bg": "Diapositiva23.png"
         },
         {
             "slide_number": "74",
-            "bg": "./temas/tema8/Diapositiva24.png",
-            "content": ""
+            "bg": "Diapositiva24.png"
         },
         {
             "slide_number": "75",
-            "bg": "./temas/tema8/Diapositiva25.png",
-            "content": ""
+            "bg": "Diapositiva25.png"
         },
         {
             "slide_number": "76",
-            "bg": "./temas/tema8/Diapositiva26.png",
-            "content": ""
+            "bg": "Diapositiva26.png"
         },
         {
             "slide_number": "77",
-            "bg": "./temas/tema8/Diapositiva27.png",
-            "content": ""
+            "bg": "Diapositiva27.png"
         },
         {
             "slide_number": "78",
-            "bg": "./temas/tema8/Diapositiva28.png",
-            "content": ""
+            "bg": "Diapositiva28.png"
         },
         {
             "slide_number": "79",
-            "bg": "./temas/tema8/Diapositiva29.png",
-            "content": ""
+            "bg": "Diapositiva29.png"
         },
         {
             "slide_number": "80",
-            "bg": "./temas/tema8/Diapositiva30.png",
-            "content": ""
+            "bg": "Diapositiva30.png"
         },
         {
             "slide_number": "81",
-            "bg": "./temas/tema8/Diapositiva31.png",
-            "content": ""
+            "bg": "Diapositiva31.png"
         },
         {
             "slide_number": "82",
-            "bg": "./temas/tema8/Diapositiva32.png",
-            "content": ""
+            "bg": "Diapositiva32.png"
         },
         {
             "slide_number": "83",
-            "bg": "./temas/tema8/Diapositiva33.png",
-            "content": ""
+            "bg": "Diapositiva33.png"
         },
         {
             "slide_number": "84",
-            "bg": "./temas/tema8/Diapositiva34.png",
-            "content": ""
+            "bg": "Diapositiva34.png"
         },
         {
             "slide_number": "85",
-            "bg": "./temas/tema8/Diapositiva35.png",
-            "content": ""
+            "bg": "Diapositiva35.png"
         },
         {
             "slide_number": "86",
-            "bg": "./temas/tema8/Diapositiva36.png",
-            "content": ""
+            "bg": "Diapositiva36.png"
         },
         {
             "slide_number": "87",
-            "bg": "./temas/tema8/Diapositiva37.png",
-            "content": ""
+            "bg": "Diapositiva37.png"
         },
         {
             "slide_number": "88",
-            "bg": "./temas/tema8/Diapositiva38.png",
-            "content": ""
+            "bg": "Diapositiva38.png"
         },
         {
             "slide_number": "89",
-            "bg": "./temas/tema8/Diapositiva39.png",
-            "content": ""
+            "bg": "Diapositiva39.png"
         },
         {
             "slide_number": "90",
-            "bg": "./temas/tema8/Diapositiva40.png",
-            "content": ""
+            "bg": "Diapositiva40.png"
         }
 
     ]

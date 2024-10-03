@@ -8,8 +8,6 @@ async function crear_obj_temaData(url) {
 
     maxVal = obj_temaData.slides.length;
 
-    slideShowElement.style.backgroundImage = `url(${obj_temaData.tema_bg})`;
-
     if(window.location.pathname === '/slide_nav.php'){
         makeSlides();
         getSlideActual('slides', 'slide_actual');
@@ -30,7 +28,10 @@ async function make_obj_temaData(url){
         // Código a realizar cuando se rechaza la promesa
         console.error('make_obj_temaData. error: ',error);
     }    
+
 }
+
+
 
 async function pintSlideActive(slide_number = null){
     //console.log('=== function pintSlideActive() ==='); 
@@ -47,14 +48,16 @@ async function pintSlideActive(slide_number = null){
 
         if(typeof slideData !== 'undefined'){
             //console.log(slideData);
-            slideShowElement.style.backgroundImage = `url(${slideData.bg})`;
+            let url = `./temas/tema${id_tema}/${slideData.bg}`;
+            slideShowElement.style.backgroundImage = `url(${url})`;
             
             if(is_fon_shown){
-                slideShowElement.style.backgroundImage = `url(${slideDataFon.bg})`;
+                let url_fon = `./temas/tema${id_tema}/${slideDataFon.bg}`;
+                slideShowElement.style.backgroundImage = `url(${url_fon})`;
                 
                 //solo para slide_nav.php
                 if(slideViewElement){
-                    slideViewElement.style.backgroundImage = `url(${slideDataFon.bg})`;
+                    slideViewElement.style.backgroundImage = `url(${url_fon})`;
                 }                
             }
             

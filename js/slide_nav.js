@@ -1,5 +1,3 @@
-
-
 const wr_vista_next = document.getElementById('wr_vista_next');
 const slideViewElement = wr_vista_next;// solo un div para la vista
 
@@ -31,27 +29,35 @@ let maxVal = 13;
 let is_started = false;
 let is_finished = false;
 
+let obj_temaData = {};
+
 
 let id_tema_get = new URL(window.location.href).searchParams.get('id_tema');
 //localStorage.setItem('id_tema',id_tema);
 
 if(id_tema_get){
-    id_tema = id_tema_get;
+    if(arr_temas.find(v => v.id_tema == id_tema_get)){
+        id_tema = id_tema_get;
+    }else{
+        id_tema = 1;
+        alert(`id_tema [${id_tema_get}] no existe en arr_temas. \nPor defecto se muestra el tema 1. \nPuedes seleccionar temas desde la lista.`);
+    }
 }else{
     id_tema = 1;
 }
 
 let url = `./json/tema${id_tema}.json`;
 
-let obj_temaData = {};
-
+make_options_to_sel_tema();
 aaa();
+
 async function aaa(){
     await insertarDatos('slides', 'slide_actual', slide_number, id_tema, is_fon_shown);
     checkTema(id_tema);
     changeTema(id_tema);
     iniciarSlides();
 }
+
 
 
 //=====================================================================================//
@@ -146,7 +152,18 @@ eid_btn_finalizar.addEventListener('click',()=>{
     finalizarSlides();
 });
 
+function make_options_to_sel_tema(){
+    eid_sel_tema.innerHTML = ''; 
+    
+    arr_temas.forEach(el => {
+        //console.log(el);
 
+        const opt = document.createElement('option');
+        opt.value = el.id_tema;
+        opt.innerHTML = `${el.id_tema}. &nbsp; ${el.titulo}`;
+        eid_sel_tema.append(opt);
+    });
+}
 
 function toggleSections(){
     // Verificar si la primera sección está visible
@@ -357,7 +374,8 @@ function makeSlides(){
         const sld = document.createElement('div');
         sld.className = 'sld';
         sld.dataset.slide_number = index;
-        sld.style.backgroundImage = `url(${slideData.bg})`;
+        let url = `./temas/tema${id_tema}/${slideData.bg}`;
+        sld.style.backgroundImage = `url(${url})`;
         sld.style.backgroundSize = 'contain';    
         //sld.innerHTML = `<div class="sld_inner">${slideData.content}</div>`;
         sld.onclick = (event)=>{
@@ -413,8 +431,6 @@ function pintBtnActive(slide_number){
 function pintSldActive(slide_number){
     resetSldActive();
     const sld_active = document.querySelector('div.sld[data-slide_number="' + slide_number + '"]');
-    let desplazar_y = sld_active.getBoundingClientRect().top;
-    //console.log('desplazar_y: ',desplazar_y);
 
     if(sld_active !== null){
         sld_active.classList.add('sld_active');
@@ -443,8 +459,9 @@ function pintSlideNext(slide_number = null){
             let slideData = obj_temaData.slides.find(v => v.slide_number === slide_number);
     
             if(typeof slideData !== 'undefined'){
-                //console.log(slideData);    
-                wr_vista_next.style.backgroundImage = `url(${slideData.bg})`;
+                //console.log(slideData);
+                let url = `./temas/tema${id_tema}/${slideData.bg}`;    
+                wr_vista_next.style.backgroundImage = `url(${url})`;
     
             }else{
                 //console.log('contenido no está definido');
@@ -507,7 +524,7 @@ async function changeTema(id_tema_param) {
     id_tema = id_tema_param;
     //console.log('id_tema: ',id_tema);
 
-    if(arr_temas.includes(Number(id_tema))){
+    if(arr_temas.find(v => v.id_tema == id_tema)){//si uso '==' no hace falta Number(id_tema)
 
         aaa();
         async function aaa(){
@@ -544,8 +561,7 @@ async function changeTema(id_tema_param) {
         
     }else{
         console.error(`No existe este id_tema '${id_tema}'`);
-        changeLang(arr_temas[0]);//'ru' por defecto
-        //return false;
+        changeTema(arr_temas[0].id_tema);//'1' por defecto
     }
    
     //if(hay_sesion && obj_ajustes_is_loaded){

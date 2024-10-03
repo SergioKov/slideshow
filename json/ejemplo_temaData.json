@@ -1,0 +1,26 @@
+{
+    "id_tema": "0",
+    "titulo": "de_bd_un_tema",
+    "slides": [
+        {
+            "slide_number": "1",
+            "bg": "./images/images1.jpg"
+        },
+        {
+            "slide_number": "2",
+            "bg": "./images/images2.jpg"
+        },
+        {
+            "slide_number": "3",
+            "bg": "./images/images3.jpg"
+        },
+        {
+            "slide_number": "4",
+            "bg": "./images/images4.jpg"
+        },
+        {
+            "slide_number": "5",
+            "bg": "./images/images5.jpg"
+        }
+    ]
+}

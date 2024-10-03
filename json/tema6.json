@@ -1,67 +1,54 @@
 {
     "id_tema": "6",
     "titulo": "tema6",
-    "tema_bg": "./images/fondo_opera.png",
     "slides": [
         {
             "slide_number": "1",
-            "bg": "./temas/tema6/Diapositiva13.png",
-            "content": ""
+            "bg": "Diapositiva13.png"
         },
         {
             "slide_number": "2",
-            "bg": "./temas/tema6/Diapositiva2.png",
-            "content": ""
+            "bg": "Diapositiva2.png"
         },
         {
             "slide_number": "3",
-            "bg": "./temas/tema6/Diapositiva3.png",
-            "content": ""
+            "bg": "Diapositiva3.png"
         },
         {
             "slide_number": "4",
-            "bg": "./temas/tema6/Diapositiva4.png",
-            "content": ""
+            "bg": "Diapositiva4.png"
         },
         {
             "slide_number": "5",
-            "bg": "./temas/tema6/Diapositiva5.png",
-            "content": ""
+            "bg": "Diapositiva5.png"
         },
         {
             "slide_number": "6",
-            "bg": "./temas/tema6/Diapositiva6.png",
-            "content": ""
+            "bg": "Diapositiva6.png"
         },
         {
             "slide_number": "7",
-            "bg": "./temas/tema6/Diapositiva7.png",
-            "content": ""
+            "bg": "Diapositiva7.png"
         },
         {
             "slide_number": "8",
-            "bg": "./temas/tema6/Diapositiva8.png",
-            "content": ""
+            "bg": "Diapositiva8.png"
         },
         {
             "slide_number": "9",
-            "bg": "./temas/tema6/Diapositiva9.png",
-            "content": ""
+            "bg": "Diapositiva9.png"
         },
         {
             "slide_number": "10",
-            "bg": "./temas/tema6/Diapositiva10.png",
-            "content": ""
+            "bg": "Diapositiva10.png"
         },
         {
             "slide_number": "11",
-            "bg": "./temas/tema6/Diapositiva11.png",
-            "content": ""
+            "bg": "Diapositiva11.png"
         },
         {
             "slide_number": "12",
-            "bg": "./temas/tema6/Diapositiva12.png",
-            "content": ""
+            "bg": "Diapositiva12.png"
         }
     ]
 }

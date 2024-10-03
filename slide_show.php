@@ -27,7 +27,6 @@ $conn->close();
     <img src="./images/fullscreen.png"/>
 </button>
 
-<script src="./js/config_both.js"></script>
 <script src="./js/slide_show.js"></script>
 <script src="./js/slide_both.js"></script>
 
